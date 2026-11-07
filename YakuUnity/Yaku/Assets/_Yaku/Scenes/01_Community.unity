@@ -13170,8 +13170,9 @@ GameObject:
   - component: {fileID: 1103139992}
   - component: {fileID: 1103139991}
   - component: {fileID: 1103139990}
+  - component: {fileID: 1103139993}
   m_Layer: 0
-  m_Name: "C\xE1mara de presentaci\xF3n"
+  m_Name: "C\xE1mara en tercera persona"
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13244,13 +13245,35 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103139989}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049487412, y: 0.074438706, z: -0.00369861, w: 0.9959901}
-  m_LocalPosition: {x: -1.08, y: 2.91, z: -11.41}
+  m_LocalRotation: {x: 0.13917312, y: 0, z: 0, w: 0.9902681}
+  m_LocalPosition: {x: -0.47, y: 2.7734318, z: -10.435362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1103139993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103139989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367cdc635acb2bc46936ee3b58a99a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Cameras.ThirdPersonCamera
+  player: {fileID: 1453392267}
+  lookInput: {fileID: 6940538419726410420, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  distance: 4.25
+  heightOffset: 0.12
+  initialPitch: 16
+  minPitch: -12
+  maxPitch: 65
+  sensitivity: 0.19
+  lookSmoothTime: 0.045
+  followSmoothTime: 0.1
 --- !u!1 &1108658740
 GameObject:
   m_ObjectHideFlags: 0
@@ -17005,6 +17028,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449893628}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1453392267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1737771801815949823, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
+  m_PrefabInstance: {fileID: 1039057299}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ee4d3eef856864c9df7e6820eadad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Player.PlayerRig
 --- !u!1 &1465557951
 GameObject:
   m_ObjectHideFlags: 0
