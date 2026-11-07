@@ -88,8 +88,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yaku.Player.PlayerMovement
   moveInput: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  sprintInput: {fileID: 7983440169816151513, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  jumpInput: {fileID: 335763634227698153, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   walkSpeed: 2.75
+  runSpeed: 4.5
   turnSpeed: 540
+  jumpHeight: 1.05
+  gravity: 18
 --- !u!1 &6715542330384435896
 GameObject:
   m_ObjectHideFlags: 0
