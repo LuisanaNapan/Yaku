@@ -23,6 +23,17 @@ namespace Yaku.Cameras
         [SerializeField, Min(0f)] private float lookSmoothTime = 0.045f;
         [SerializeField, Min(0f)] private float followSmoothTime = 0.10f;
 
+        [Header("Obstacles")]
+        [SerializeField] private LayerMask obstacleLayers = ~0;
+        [SerializeField, Min(0.01f)] private float collisionRadius = 0.24f;
+        [SerializeField, Min(0f)] private float obstacleClearance = 0.12f;
+        [SerializeField, Min(0f)] private float retractSmoothTime = 0.06f;
+        [SerializeField, Min(0f)] private float recoverySmoothTime = 0.28f;
+
+        private readonly RaycastHit[] obstacleHits = new RaycastHit[16];
+        private Camera view;
+        private float orbitDistance;
+        private float distanceVelocity;
         private InputAction lookAction;
         private Transform target;
         private Vector3 pivot;
@@ -38,6 +49,7 @@ namespace Yaku.Cameras
 
         private void Awake()
         {
+            view = GetComponent<Camera>();
             target = player != null ? player.CameraTarget : null;
             if (target == null || lookInput == null || lookInput.action == null)
             {
@@ -61,7 +73,9 @@ namespace Yaku.Cameras
             yawVelocity = pitchVelocity = 0f;
             desiredYaw = yaw = player.transform.eulerAngles.y;
             desiredPitch = pitch = ClampPitch(initialPitch);
-            ApplyPose();
+            orbitDistance = distance;
+            distanceVelocity = 0f;
+            ApplyPose(0f);
             SetCursorCaptured(Application.isFocused);
         }
 
@@ -107,15 +121,51 @@ namespace Yaku.Cameras
             float completedTurns = 360f * Mathf.Floor(yaw / 360f);
             yaw -= completedTurns;
             desiredYaw -= completedTurns;
-            ApplyPose();
+            ApplyPose(deltaTime);
         }
 
         private float ClampPitch(float angle) => Mathf.Clamp(angle, Mathf.Min(minPitch, maxPitch), Mathf.Max(minPitch, maxPitch));
 
-        private void ApplyPose()
+        private void ApplyPose(float deltaTime)
         {
             Quaternion orbit = Quaternion.Euler(pitch, yaw, 0f);
-            transform.SetPositionAndRotation(pivot - orbit * Vector3.forward * distance, orbit);
+            Vector3 outward = orbit * Vector3.back;
+            float nearHalfHeight = view.nearClipPlane * Mathf.Tan(view.fieldOfView * 0.5f * Mathf.Deg2Rad);
+            float nearRadius = new Vector3(nearHalfHeight * view.aspect, nearHalfHeight, view.nearClipPlane).magnitude;
+            float safeDistance = FindClearDistance(outward, Mathf.Max(collisionRadius, nearRadius));
+            float desiredDistance = safeDistance < distance ? Mathf.Max(0f, safeDistance - obstacleClearance) : distance;
+            float smoothTime = desiredDistance < orbitDistance ? retractSmoothTime : recoverySmoothTime;
+            float nextDistance = deltaTime > 0f && smoothTime > 0f
+                ? Mathf.SmoothDamp(orbitDistance, desiredDistance, ref distanceVelocity, smoothTime, Mathf.Infinity, deltaTime)
+                : desiredDistance;
+
+            // A newly intersecting obstacle takes precedence over damping.
+            orbitDistance = Mathf.Min(nextDistance, safeDistance);
+            if (nextDistance >= safeDistance)
+                distanceVelocity = 0f;
+            transform.SetPositionAndRotation(pivot + outward * orbitDistance, orbit);
+        }
+
+        private float FindClearDistance(Vector3 outward, float radius)
+        {
+            int count = Physics.SphereCastNonAlloc(pivot, radius, outward, obstacleHits, distance,
+                obstacleLayers, QueryTriggerInteraction.Ignore);
+            RaycastHit[] hits = obstacleHits;
+            if (count == obstacleHits.Length)
+            {
+                hits = Physics.SphereCastAll(pivot, radius, outward, distance,
+                    obstacleLayers, QueryTriggerInteraction.Ignore);
+                count = hits.Length;
+            }
+
+            float clearDistance = distance;
+            for (int i = 0; i < count; i++)
+            {
+                if (!hits[i].collider.transform.IsChildOf(player.transform))
+                    clearDistance = Mathf.Min(clearDistance, hits[i].distance);
+            }
+
+            return clearDistance;
         }
 
         private static bool UpdateCursorCapture()
