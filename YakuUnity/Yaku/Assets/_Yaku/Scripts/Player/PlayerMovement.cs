@@ -28,6 +28,8 @@ namespace Yaku.Player
         private float verticalSpeed;
         private float jumpBuffer;
 
+        public float VerticalSpeed => verticalSpeed;
+
         private void Awake()
         {
             controller = GetComponent<CharacterController>();

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Yaku.Player;
 
 namespace Yaku.Characters
 {
@@ -13,11 +14,13 @@ namespace Yaku.Characters
 
         private CharacterController controller;
         private Animator animator;
+        private PlayerMovement movement;
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
             controller = GetComponentInParent<CharacterController>();
+            movement = GetComponentInParent<PlayerMovement>();
             if (controller == null)
                 enabled = false;
         }
@@ -27,8 +30,9 @@ namespace Yaku.Characters
             Vector3 velocity = controller.velocity;
             float planarSpeed = new Vector2(velocity.x, velocity.z).magnitude;
             animator.SetFloat(GroundSpeed, planarSpeed, 0.085f, Time.deltaTime);
-            animator.SetFloat(VerticalSpeed, velocity.y);
-            animator.SetBool(Grounded, controller.isGrounded);
+            bool grounded = controller.isGrounded;
+            animator.SetFloat(VerticalSpeed, grounded ? 0f : movement != null ? movement.VerticalSpeed : velocity.y);
+            animator.SetBool(Grounded, grounded);
         }
     }
 }
