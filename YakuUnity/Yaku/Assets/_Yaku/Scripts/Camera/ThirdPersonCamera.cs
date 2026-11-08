@@ -22,6 +22,8 @@ namespace Yaku.Cameras
         [SerializeField, Min(0f)] private float sensitivity = 0.19f;
         [SerializeField, Min(0f)] private float lookSmoothTime = 0.045f;
         [SerializeField, Min(0f)] private float followSmoothTime = 0.10f;
+        [SerializeField, Min(0f)] private float verticalSmoothTime = 0.17f;
+        [SerializeField, Min(0f)] private float maxVerticalLag = 0.45f;
 
         [Header("Obstacles")]
         [SerializeField] private LayerMask obstacleLayers = ~0;
@@ -38,6 +40,7 @@ namespace Yaku.Cameras
         private Transform target;
         private Vector3 pivot;
         private Vector3 followVelocity;
+        private float verticalFollowVelocity;
         private float desiredYaw;
         private float desiredPitch;
         private float yaw;
@@ -70,6 +73,7 @@ namespace Yaku.Cameras
             lookAction.Enable();
             pivot = TargetCenter;
             followVelocity = Vector3.zero;
+            verticalFollowVelocity = 0f;
             yawVelocity = pitchVelocity = 0f;
             desiredYaw = yaw = player.transform.eulerAngles.y;
             desiredPitch = pitch = ClampPitch(initialPitch);
@@ -114,9 +118,7 @@ namespace Yaku.Cameras
             pitch = lookSmoothTime > 0f
                 ? Mathf.SmoothDamp(pitch, desiredPitch, ref pitchVelocity, lookSmoothTime, Mathf.Infinity, deltaTime)
                 : desiredPitch;
-            pivot = followSmoothTime > 0f
-                ? Vector3.SmoothDamp(pivot, TargetCenter, ref followVelocity, followSmoothTime, Mathf.Infinity, deltaTime)
-                : TargetCenter;
+            FollowTarget(deltaTime);
 
             float completedTurns = 360f * Mathf.Floor(yaw / 360f);
             yaw -= completedTurns;
@@ -126,13 +128,50 @@ namespace Yaku.Cameras
 
         private float ClampPitch(float angle) => Mathf.Clamp(angle, Mathf.Min(minPitch, maxPitch), Mathf.Max(minPitch, maxPitch));
 
+        private void FollowTarget(float deltaTime)
+        {
+            Vector3 anchor = TargetCenter;
+            Vector3 horizontalTarget = new Vector3(anchor.x, pivot.y, anchor.z);
+            Vector3 next = followSmoothTime > 0f
+                ? Vector3.SmoothDamp(pivot, horizontalTarget, ref followVelocity, followSmoothTime, Mathf.Infinity, deltaTime)
+                : horizontalTarget;
+
+            float height = verticalSmoothTime > 0f
+                ? Mathf.SmoothDamp(pivot.y, anchor.y, ref verticalFollowVelocity, verticalSmoothTime, Mathf.Infinity, deltaTime)
+                : anchor.y;
+            next.y = Mathf.Clamp(height, anchor.y - maxVerticalLag, anchor.y + maxVerticalLag);
+            if (next.y != height)
+                verticalFollowVelocity = 0f;
+
+            // Resolve the lagged pivot from the player's anchor before casting the camera boom.
+            Vector3 offset = next - anchor;
+            float length = offset.magnitude;
+            if (length > 0.001f)
+            {
+                Vector3 direction = offset / length;
+                float clear = FindClearDistance(anchor, direction, length, ProbeRadius());
+                if (clear < length)
+                {
+                    next = anchor + direction * Mathf.Max(0f, clear - obstacleClearance);
+                    followVelocity = Vector3.zero;
+                    verticalFollowVelocity = 0f;
+                }
+            }
+            pivot = next;
+        }
+
+        private float ProbeRadius()
+        {
+            float nearHalfHeight = view.nearClipPlane * Mathf.Tan(view.fieldOfView * 0.5f * Mathf.Deg2Rad);
+            float nearRadius = new Vector3(nearHalfHeight * view.aspect, nearHalfHeight, view.nearClipPlane).magnitude;
+            return Mathf.Max(collisionRadius, nearRadius);
+        }
+
         private void ApplyPose(float deltaTime)
         {
             Quaternion orbit = Quaternion.Euler(pitch, yaw, 0f);
             Vector3 outward = orbit * Vector3.back;
-            float nearHalfHeight = view.nearClipPlane * Mathf.Tan(view.fieldOfView * 0.5f * Mathf.Deg2Rad);
-            float nearRadius = new Vector3(nearHalfHeight * view.aspect, nearHalfHeight, view.nearClipPlane).magnitude;
-            float safeDistance = FindClearDistance(outward, Mathf.Max(collisionRadius, nearRadius));
+            float safeDistance = FindClearDistance(pivot, outward, distance, ProbeRadius());
             float desiredDistance = safeDistance < distance ? Mathf.Max(0f, safeDistance - obstacleClearance) : distance;
             float smoothTime = desiredDistance < orbitDistance ? retractSmoothTime : recoverySmoothTime;
             float nextDistance = deltaTime > 0f && smoothTime > 0f
@@ -146,19 +185,19 @@ namespace Yaku.Cameras
             transform.SetPositionAndRotation(pivot + outward * orbitDistance, orbit);
         }
 
-        private float FindClearDistance(Vector3 outward, float radius)
+        private float FindClearDistance(Vector3 origin, Vector3 direction, float maxDistance, float radius)
         {
-            int count = Physics.SphereCastNonAlloc(pivot, radius, outward, obstacleHits, distance,
+            int count = Physics.SphereCastNonAlloc(origin, radius, direction, obstacleHits, maxDistance,
                 obstacleLayers, QueryTriggerInteraction.Ignore);
             RaycastHit[] hits = obstacleHits;
             if (count == obstacleHits.Length)
             {
-                hits = Physics.SphereCastAll(pivot, radius, outward, distance,
+                hits = Physics.SphereCastAll(origin, radius, direction, maxDistance,
                     obstacleLayers, QueryTriggerInteraction.Ignore);
                 count = hits.Length;
             }
 
-            float clearDistance = distance;
+            float clearDistance = maxDistance;
             for (int i = 0; i < count; i++)
             {
                 if (!hits[i].collider.transform.IsChildOf(player.transform))
