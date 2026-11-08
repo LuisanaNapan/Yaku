@@ -8,6 +8,9 @@ namespace Yaku.Player
     public sealed class PlayerMovement : MonoBehaviour
     {
         private const float GroundContactSpeed = -2f;
+        private const float JumpBufferDuration = 0.10f;
+        private const float ReleaseGravityMultiplier = 1.65f;
+        private const float FallGravityMultiplier = 1.25f;
 
         [SerializeField] private InputActionReference moveInput;
         [SerializeField] private InputActionReference sprintInput;
@@ -23,6 +26,7 @@ namespace Yaku.Player
         private InputAction sprintAction;
         private InputAction jumpAction;
         private float verticalSpeed;
+        private float jumpBuffer;
 
         private void Awake()
         {
@@ -55,6 +59,7 @@ namespace Yaku.Player
             sprintAction?.Disable();
             jumpAction?.Disable();
             verticalSpeed = 0f;
+            jumpBuffer = 0f;
         }
 
         private void OnDestroy()
@@ -73,17 +78,35 @@ namespace Yaku.Player
             if (deltaTime <= 0f)
                 return;
 
-            Vector3 movement = ReadMovementDirection();
+            SimulateMovement(ReadMovementDirection(), sprintAction.IsPressed(), jumpAction.WasPressedThisFrame(),
+                jumpAction.IsPressed(), deltaTime);
+        }
+
+        private void SimulateMovement(Vector3 movement, bool sprinting, bool jumpPressed, bool jumpHeld, float deltaTime)
+        {
+            jumpBuffer = jumpPressed ? JumpBufferDuration : Mathf.Max(0f, jumpBuffer - deltaTime);
             if (controller.isGrounded && verticalSpeed <= 0f)
             {
-                verticalSpeed = jumpAction.WasPressedThisFrame()
-                    ? Mathf.Sqrt(2f * gravity * jumpHeight)
-                    : GroundContactSpeed;
+                if (jumpBuffer > 0f)
+                {
+                    verticalSpeed = Mathf.Sqrt(2f * gravity * jumpHeight);
+                    jumpBuffer = 0f;
+                }
+                else
+                {
+                    verticalSpeed = GroundContactSpeed;
+                }
             }
 
-            float speed = sprintAction.IsPressed() ? runSpeed : walkSpeed;
-            float verticalDistance = (verticalSpeed - 0.5f * gravity * deltaTime) * deltaTime;
-            verticalSpeed -= gravity * deltaTime;
+            float acceleration = gravity;
+            if (verticalSpeed < 0f && !controller.isGrounded)
+                acceleration *= FallGravityMultiplier;
+            else if (verticalSpeed > 0f && !jumpHeld)
+                acceleration *= ReleaseGravityMultiplier;
+
+            float speed = sprinting ? runSpeed : walkSpeed;
+            float verticalDistance = (verticalSpeed - 0.5f * acceleration * deltaTime) * deltaTime;
+            verticalSpeed -= acceleration * deltaTime;
 
             Vector3 displacement = movement * (speed * deltaTime) + Vector3.up * verticalDistance;
             CollisionFlags contacts = controller.Move(displacement);
