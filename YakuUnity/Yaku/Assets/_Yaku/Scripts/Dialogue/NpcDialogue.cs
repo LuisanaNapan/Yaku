@@ -7,8 +7,16 @@ namespace Yaku.Dialogue
     {
         [SerializeField] private DialogueData dialogue;
 
-        public string Prompt => $"Hablar con {dialogue.Speaker}";
+        public IInteractable AlternateInteraction { get; set; }
 
-        public void Interact(GameObject actor) => actor.GetComponent<DialogueController>().Open(dialogue);
+        public string Prompt => AlternateInteraction?.Prompt ?? $"Hablar con {dialogue.Speaker}";
+
+        public void Interact(GameObject actor)
+        {
+            if (AlternateInteraction != null)
+                AlternateInteraction.Interact(actor);
+            else
+                actor.GetComponent<DialogueController>().Open(dialogue);
+        }
     }
 }

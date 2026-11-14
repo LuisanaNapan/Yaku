@@ -15,5 +15,5 @@ MonoBehaviour:
   speaker: Elena
   portrait: {fileID: 0}
   lines:
-  - Bienvenida, Yaku. En la posta orientamos a las familias sobre el cuidado del agua.
-  - "El almac\xE9n comunitario re\xFAne los suministros que podemos repartir."
+  - "Yaku, \xBFnos ayudas con una entrega? La comunidad tiene suministros para las familias."
+  - "Recoge el paquete del almac\xE9n y entr\xE9gaselo a Tom\xE1s. Al terminar podr\xE1s visitar el embarcadero."
