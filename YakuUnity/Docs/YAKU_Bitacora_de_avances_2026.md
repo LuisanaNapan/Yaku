@@ -28,7 +28,7 @@ Se aprobó el avance 3 con carrera, salto, gravedad y animaciones corporales pro
 
 | Avance | Funcionalidad | Hash | Fecha real de implementación | Pruebas realizadas o pendientes |
 | --- | --- | --- | --- | --- |
-| 6 | Detección de objetos interactivos y aviso contextual de **E**. | Pendiente | Pendiente | Pendiente. Entrar y salir del alcance y comprobar cuál de dos objetos cercanos recibe la interacción. |
+| 6 | Detección de objetos interactivos y aviso contextual de **E**. | Ver historial de la rama | 27 de noviembre de 2026 | Play Mode mediante Unity MCP. Cinco comprobaciones aprobadas de alcance, aviso, selección por proximidad y pulsaciones de E. Sin errores ni advertencias. |
 | 7 | Diálogos configurables con Elena, Tomás y Rosa. | Pendiente | Pendiente | Pendiente. Hablar con los tres personajes, elegir una respuesta y comprobar que se recuperan los controles al cerrar el diálogo. |
 | 8 | Inventario de seis espacios, límites por pila y objetos recolectables. | Pendiente | Pendiente | Pendiente. Llenar el inventario y comprobar que un objeto rechazado sigue disponible en la escena. |
 | 9 | Validación de entregas por destinatario, objeto, cantidad y procedencia. | Pendiente | Pendiente | Pendiente. Probar un destinatario incorrecto, un objeto ausente y una entrega repetida. Verificar el consumo de inventario solo en la entrega válida. |
