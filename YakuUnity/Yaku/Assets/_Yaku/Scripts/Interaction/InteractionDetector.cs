@@ -11,8 +11,11 @@ namespace Yaku.Interaction
         private readonly Collider[] nearby = new Collider[32];
         private InputAction action;
         private IInteractable target;
+        private System.Action modalInteraction;
 
-        public string Prompt => target?.Prompt;
+        public string Prompt => modalInteraction == null ? target?.Prompt : null;
+
+        public void SetModalInteraction(System.Action action) => modalInteraction = action;
 
         private void Awake() => action = interactInput.action.Clone();
         private void OnEnable() => action?.Enable();
@@ -27,6 +30,13 @@ namespace Yaku.Interaction
 
         private void Update()
         {
+            if (modalInteraction != null)
+            {
+                if (action.WasPressedThisFrame())
+                    modalInteraction();
+                return;
+            }
+
             target = FindTarget();
             if (action.WasPressedThisFrame())
                 target?.Interact(gameObject);

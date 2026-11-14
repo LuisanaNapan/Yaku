@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2477744179156723527}
   - component: {fileID: 8851401458703365377}
   - component: {fileID: 3293179153023808280}
+  - component: {fileID: 8845903550888953852}
   m_Layer: 0
   m_Name: Yaku
   m_TagString: Player
@@ -123,6 +124,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25378b2af6103b243b9d0f90225f4446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yaku.UI.CommunityHud
+--- !u!114 &8845903550888953852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102238986775870347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84964f8d47dcbc41bca8acfb5eeecef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Dialogue.DialogueController
 --- !u!1 &6715542330384435896
 GameObject:
   m_ObjectHideFlags: 0
