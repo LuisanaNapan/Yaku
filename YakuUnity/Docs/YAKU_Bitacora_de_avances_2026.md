@@ -30,7 +30,7 @@ Se aprobó el avance 3 con carrera, salto, gravedad y animaciones corporales pro
 | --- | --- | --- | --- | --- |
 | 6 | Detección de objetos interactivos y aviso contextual de **E**. | Ver historial de la rama | 27 de noviembre de 2026 | Play Mode mediante Unity MCP. Cinco comprobaciones aprobadas de alcance, aviso, selección por proximidad y pulsaciones de E. Sin errores ni advertencias. |
 | 7 | Diálogos configurables con Elena, Tomás y Rosa. | Ver historial de la rama | 27 de noviembre de 2026 | 15 comprobaciones en Play Mode mediante Unity MCP. Referencias, aviso, apertura, avance, cierre y recuperación del movimiento con Elena, Tomás y Rosa. Sin errores ni advertencias. |
-| 8 | Inventario de seis espacios, límites por pila y objetos recolectables. | Pendiente | Pendiente | Pendiente. Llenar el inventario y comprobar que un objeto rechazado sigue disponible en la escena. |
+| 8 | Inventario de seis espacios, límites por pila y objetos recolectables. | Ver historial de la rama | 27 de noviembre de 2026 | Nueve comprobaciones aprobadas en Unity MCP, incluidos seis espacios, apilado, retiro, rechazo por capacidad, cantidades inválidas y HUD con icono. Consola limpia. |
 | 9 | Validación de entregas por destinatario, objeto, cantidad y procedencia. | Pendiente | Pendiente | Pendiente. Probar un destinatario incorrecto, un objeto ausente y una entrega repetida. Verificar el consumo de inventario solo en la entrega válida. |
 | 10 | Progresión de misiones, objetivo activo en el HUD y tutorial «El primer encargo». | Pendiente | Pendiente | Pendiente. Completar el tutorial sin ayuda externa y verificar que la ribera se habilita al finalizar. |
 
