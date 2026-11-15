@@ -29,7 +29,7 @@ namespace Yaku.Characters
         {
             Vector3 velocity = controller.velocity;
             float planarSpeed = new Vector2(velocity.x, velocity.z).magnitude;
-            animator.SetFloat(GroundSpeed, planarSpeed, 0.085f, Time.deltaTime);
+            animator.SetFloat(GroundSpeed, planarSpeed, 0.055f, Time.deltaTime);
             bool grounded = controller.isGrounded;
             animator.SetFloat(VerticalSpeed, grounded ? 0f : movement != null ? movement.VerticalSpeed : velocity.y);
             animator.SetBool(Grounded, grounded);
