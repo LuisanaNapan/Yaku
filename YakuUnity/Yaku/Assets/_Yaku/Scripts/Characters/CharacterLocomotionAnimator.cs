@@ -11,6 +11,7 @@ namespace Yaku.Characters
         private static readonly int GroundSpeed = Animator.StringToHash("GroundSpeed");
         private static readonly int VerticalSpeed = Animator.StringToHash("VerticalSpeed");
         private static readonly int Grounded = Animator.StringToHash("Grounded");
+        private static readonly int JumpPhase = Animator.StringToHash("JumpPhase");
 
         private CharacterController controller;
         private Animator animator;
@@ -33,6 +34,8 @@ namespace Yaku.Characters
             bool grounded = controller.isGrounded;
             animator.SetFloat(VerticalSpeed, grounded ? 0f : movement != null ? movement.VerticalSpeed : velocity.y);
             animator.SetBool(Grounded, grounded);
+            if (movement != null && !grounded)
+                animator.SetFloat(JumpPhase, movement.JumpPhase);
         }
     }
 }

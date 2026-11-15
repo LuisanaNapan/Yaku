@@ -30,6 +30,7 @@ namespace Yaku.Player
         private Vector3 planarVelocity;
 
         public float VerticalSpeed => verticalSpeed;
+        public float JumpPhase => Mathf.Clamp01(1f - verticalSpeed / Mathf.Sqrt(2f * gravity * jumpHeight));
 
         private void Awake()
         {
