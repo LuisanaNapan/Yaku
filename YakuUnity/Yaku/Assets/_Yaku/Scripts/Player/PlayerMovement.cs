@@ -15,7 +15,7 @@ namespace Yaku.Player
         [SerializeField] private InputActionReference moveInput;
         [SerializeField] private InputActionReference sprintInput;
         [SerializeField] private InputActionReference jumpInput;
-        [SerializeField, Min(0f)] private float walkSpeed = 2.75f;
+        [SerializeField, Min(0f)] private float walkSpeed = 2.05f;
         [SerializeField, Min(0f)] private float runSpeed = 4.5f;
         [SerializeField, Min(0f)] private float turnSpeed = 540f;
         [SerializeField, Min(0.01f)] private float jumpHeight = 1.05f;
@@ -27,6 +27,7 @@ namespace Yaku.Player
         private InputAction jumpAction;
         private float verticalSpeed;
         private float jumpBuffer;
+        private Vector3 planarVelocity;
 
         public float VerticalSpeed => verticalSpeed;
 
@@ -62,6 +63,7 @@ namespace Yaku.Player
             jumpAction?.Disable();
             verticalSpeed = 0f;
             jumpBuffer = 0f;
+            planarVelocity = Vector3.zero;
         }
 
         private void OnDestroy()
@@ -110,7 +112,10 @@ namespace Yaku.Player
             float verticalDistance = (verticalSpeed - 0.5f * acceleration * deltaTime) * deltaTime;
             verticalSpeed -= acceleration * deltaTime;
 
-            Vector3 displacement = movement * (speed * deltaTime) + Vector3.up * verticalDistance;
+            Vector3 desiredVelocity = movement * speed;
+            float response = movement.sqrMagnitude > 0f ? 16f : 23f;
+            planarVelocity = Vector3.MoveTowards(planarVelocity, desiredVelocity, response * deltaTime);
+            Vector3 displacement = planarVelocity * deltaTime + Vector3.up * verticalDistance;
             CollisionFlags contacts = controller.Move(displacement);
             if ((contacts & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
                 verticalSpeed = 0f;
