@@ -42,6 +42,8 @@ namespace Yaku.UI
             notificationUntil = Time.unscaledTime + 3f;
         }
 
+        public void SetVisible(bool visible) => canvas.enabled = visible;
+
         public Text CreatePanel(string name, Vector2 anchor, Vector2 offset, Vector2 size, int fontSize)
         {
             var panel = new GameObject(name, typeof(RectTransform), typeof(Image));

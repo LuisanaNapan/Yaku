@@ -95,10 +95,10 @@ namespace Yaku.Cameras
 
         private void LateUpdate()
         {
-            bool canLook = UpdateCursorCapture();
             float deltaTime = Time.deltaTime;
             if (deltaTime <= 0f || target == null)
                 return;
+            bool canLook = UpdateCursorCapture();
 
             if (canLook && lookAction.activeControl?.device is Mouse)
             {

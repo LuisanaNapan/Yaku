@@ -60,6 +60,7 @@ namespace Yaku.Inventory
 
         private void Update()
         {
+            if (Time.timeScale <= 0f) return;
             if (Keyboard.current?.iKey.wasPressedThisFrame == true)
                 panel.SetActive(!panel.activeSelf);
             if (panel.activeSelf)

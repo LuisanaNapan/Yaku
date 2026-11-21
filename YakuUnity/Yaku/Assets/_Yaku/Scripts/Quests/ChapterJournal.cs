@@ -47,6 +47,7 @@ namespace Yaku.Quests
 
         private void Update()
         {
+            if (Time.timeScale <= 0f) return;
             var keyboard = Keyboard.current;
             if (keyboard == null) return;
 

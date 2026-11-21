@@ -52,7 +52,7 @@ namespace Yaku.Quests
 
         private void Update()
         {
-            if (!IsOpen || accepted) return;
+            if (Time.timeScale <= 0f || !IsOpen || accepted) return;
 
             var keyboard = Keyboard.current;
             if (keyboard == null) return;

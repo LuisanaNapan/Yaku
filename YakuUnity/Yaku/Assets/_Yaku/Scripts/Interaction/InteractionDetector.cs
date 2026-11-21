@@ -31,6 +31,8 @@ namespace Yaku.Interaction
 
         private void Update()
         {
+            if (Time.timeScale <= 0f) return;
+
             if (modalInteraction != null)
             {
                 if (action.WasPressedThisFrame())
