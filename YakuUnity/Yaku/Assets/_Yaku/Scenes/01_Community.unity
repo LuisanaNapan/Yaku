@@ -14427,6 +14427,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1453392287}
+    - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1453392288}
   m_SourcePrefab: {fileID: 100100000, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
 --- !u!4 &1039057300 stripped
 Transform:
@@ -20033,6 +20036,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa761723396d0424aa3018540be27594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Yaku.UI.GameMenu
+--- !u!114 &1453392288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453392266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a66cb17545598a409b31116d1e2838f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.UI.CommunityStatus
+  health: 100
+  hydration: 100
+  riverMarker: {fileID: 1529537228}
+  dangerRadius: 3
 --- !u!1 &1465557951
 GameObject:
   m_ObjectHideFlags: 0

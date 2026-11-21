@@ -7,7 +7,9 @@ namespace Yaku.UI
     [RequireComponent(typeof(InteractionDetector))]
     public sealed class CommunityHud : MonoBehaviour
     {
-        private static readonly Color PanelColor = new Color(0.09f, 0.16f, 0.13f, 0.94f);
+        private static readonly Color PanelColor = new Color(0.052f, 0.13f, 0.105f, 0.965f);
+        internal static readonly Color TextColor = new Color(0.99f, 0.96f, 0.86f);
+        internal static readonly Color AccentColor = new Color(0.80f, 0.69f, 0.42f);
         private InteractionDetector detector;
         private Canvas canvas;
         private Text prompt;
@@ -24,22 +26,26 @@ namespace Yaku.UI
             var scaler = overlay.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1280, 720);
-            prompt = CreatePanel("Interaction", new Vector2(0.5f, 0f), new Vector2(0, 48), new Vector2(340, 48), 23);
-            notification = CreatePanel("Message", new Vector2(0.5f, 1f), new Vector2(0, -54), new Vector2(520, 54), 20);
+            scaler.matchWidthOrHeight = 0.5f;
+            prompt = CreatePanel("Interaction", new Vector2(0.5f, 0f), new Vector2(0, 46), new Vector2(410, 48), 22);
+            notification = CreatePanel("Message", new Vector2(0.5f, 1f), new Vector2(0, -51), new Vector2(484, 64), 19);
+            var packHint = CreatePanel("Inventory Hint", new Vector2(1f, 0f), new Vector2(-98, 35),
+                new Vector2(160, 37), 17);
+            packHint.text = "<b>[I]</b> Mochila";
         }
 
         private void LateUpdate()
         {
             string hint = detector.Prompt;
             prompt.transform.parent.gameObject.SetActive(hint != null);
-            prompt.text = hint == null ? string.Empty : $"[E] {hint}";
-            notification.transform.parent.gameObject.SetActive(Time.unscaledTime < notificationUntil);
+            prompt.text = hint == null ? string.Empty : $"<color=#E3C680><b>[E]</b></color> {hint}";
+            notification.transform.parent.gameObject.SetActive(Time.time < notificationUntil);
         }
 
         public void Notify(string message)
         {
             notification.text = message;
-            notificationUntil = Time.unscaledTime + 3f;
+            notificationUntil = Time.time + 3.5f;
         }
 
         public void SetVisible(bool visible) => canvas.enabled = visible;
@@ -55,6 +61,9 @@ namespace Yaku.UI
             var image = panel.GetComponent<Image>();
             image.color = PanelColor;
             image.raycastTarget = false;
+            var border = panel.AddComponent<Outline>();
+            border.effectColor = new Color(0.59f, 0.60f, 0.37f, 0.62f);
+            border.effectDistance = new Vector2(1.25f, 1.25f);
 
             var label = new GameObject("Text", typeof(RectTransform), typeof(Text));
             label.transform.SetParent(panel.transform, false);
@@ -65,7 +74,7 @@ namespace Yaku.UI
             labelRect.offsetMax = new Vector2(-16, -5);
             var text = label.GetComponent<Text>();
             text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            text.color = new Color(0.99f, 0.95f, 0.84f);
+            text.color = TextColor;
             text.fontSize = fontSize;
             text.alignment = TextAnchor.MiddleCenter;
             text.raycastTarget = false;

@@ -62,8 +62,8 @@ namespace Yaku.Quests
 
         private void Start()
         {
-            objective = hud.CreatePanel("Objective", new Vector2(0, 1), new Vector2(224, -86),
-                new Vector2(406, 100), 19);
+            objective = hud.CreatePanel("Objective", new Vector2(0, 1), new Vector2(214, -144),
+                new Vector2(390, 94), 19);
             objective.alignment = TextAnchor.MiddleLeft;
             if (!UseChapterJournal)
             {

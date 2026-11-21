@@ -50,8 +50,8 @@ namespace Yaku.Quests
 
         private void Start()
         {
-            objectiveText = hud.CreatePanel("Chapter Objective", new Vector2(0, 1), new Vector2(224, -86),
-                new Vector2(406, 100), 19);
+            objectiveText = hud.CreatePanel("Chapter Objective", new Vector2(0, 1), new Vector2(214, -151),
+                new Vector2(390, 108), 19);
             objectiveText.alignment = TextAnchor.MiddleLeft;
             objectiveText.transform.parent.gameObject.SetActive(false);
         }

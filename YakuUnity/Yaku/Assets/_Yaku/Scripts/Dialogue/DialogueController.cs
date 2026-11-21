@@ -26,7 +26,7 @@ namespace Yaku.Dialogue
             detector = GetComponent<InteractionDetector>();
             movement = GetComponent<PlayerMovement>();
             message = GetComponent<CommunityHud>().CreatePanel("Dialogue", new Vector2(0.5f, 0f),
-                new Vector2(0, 125), new Vector2(850, 162), 24);
+                new Vector2(0, 132), new Vector2(840, 172), 23);
             message.supportRichText = true;
             var icon = new GameObject("Portrait", typeof(RectTransform), typeof(Image));
             icon.transform.SetParent(message.transform.parent, false);
@@ -74,7 +74,7 @@ namespace Yaku.Dialogue
         private void RenderLine()
         {
             string action = line + 1 < active.LineCount ? "Continuar" : "Cerrar";
-            message.text = $"<b>{active.Speaker}</b>\n{active.GetLine(line)}\n<size=18>[E] {action}</size>";
+            message.text = $"<color=#E3C680><b>{active.Speaker}</b></color>\n{active.GetLine(line)}\n<size=19>[E] {action}</size>";
         }
 
         private void Close()

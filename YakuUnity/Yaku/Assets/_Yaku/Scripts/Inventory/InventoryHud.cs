@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Yaku.Interaction;
 using Yaku.UI;
 
 namespace Yaku.Inventory
@@ -12,16 +13,20 @@ namespace Yaku.Inventory
         private readonly Image[] icons = new Image[PlayerInventory.Capacity];
         private PlayerInventory inventory;
         private GameObject panel;
+        private InteractionDetector detector;
+        private bool inventoryOpen;
 
         private void Start()
         {
             inventory = GetComponent<PlayerInventory>();
+            detector = GetComponent<InteractionDetector>();
             var hud = GetComponent<CommunityHud>();
-            var heading = hud.CreatePanel("Inventory", Vector2.one, new Vector2(-186, -240),
+            var heading = hud.CreatePanel("Inventory", Vector2.one, new Vector2(-179, -211),
                 new Vector2(318, 338), 22);
             panel = heading.transform.parent.gameObject;
             heading.alignment = TextAnchor.UpperCenter;
             heading.text = "SUMINISTROS  ·  [I]";
+            heading.color = CommunityHud.AccentColor;
             heading.rectTransform.offsetMax = new Vector2(-16, -12);
 
             for (int i = 0; i < labels.Length; i++)
@@ -62,7 +67,10 @@ namespace Yaku.Inventory
         {
             if (Time.timeScale <= 0f) return;
             if (Keyboard.current?.iKey.wasPressedThisFrame == true)
-                panel.SetActive(!panel.activeSelf);
+                inventoryOpen = !inventoryOpen;
+            bool visible = inventoryOpen && !detector.HasModalInteraction;
+            if (panel.activeSelf != visible)
+                panel.SetActive(visible);
             if (panel.activeSelf)
                 Render();
         }
