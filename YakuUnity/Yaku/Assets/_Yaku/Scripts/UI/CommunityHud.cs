@@ -14,11 +14,13 @@ namespace Yaku.UI
         private Canvas canvas;
         private Text prompt;
         private Text notification;
+        private GameAudio audioController;
         private float notificationUntil;
 
         private void Awake()
         {
             detector = GetComponent<InteractionDetector>();
+            audioController = GetComponent<GameAudio>();
             var overlay = new GameObject("Community HUD", typeof(Canvas), typeof(CanvasScaler));
             overlay.transform.SetParent(transform, false);
             canvas = overlay.GetComponent<Canvas>();
@@ -42,10 +44,11 @@ namespace Yaku.UI
             notification.transform.parent.gameObject.SetActive(Time.time < notificationUntil);
         }
 
-        public void Notify(string message)
+        public void Notify(string message, GameAudio.Cue cue = GameAudio.Cue.None)
         {
             notification.text = message;
             notificationUntil = Time.time + 3.5f;
+            audioController?.Queue(cue);
         }
 
         public void SetVisible(bool visible) => canvas.enabled = visible;

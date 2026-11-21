@@ -14430,6 +14430,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1453392288}
+    - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1453392289}
   m_SourcePrefab: {fileID: 100100000, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
 --- !u!4 &1039057300 stripped
 Transform:
@@ -20052,6 +20055,24 @@ MonoBehaviour:
   hydration: 100
   riverMarker: {fileID: 1529537228}
   dangerRadius: 3
+--- !u!114 &1453392289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453392266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a3a8d5f1079bc4f8605bcb5e6bdf88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.UI.GameAudio
+  menuMusic: {fileID: 8300000, guid: d289419555846b243b403b4cc6afb240, type: 3}
+  communityMusic: {fileID: 8300000, guid: 10f9661ae0ee83e46a3a67dae9ce5ee7, type: 3}
+  interact: {fileID: 8300000, guid: 69546c9c5319683489e826eff842ebf2, type: 3}
+  collect: {fileID: 8300000, guid: 370d1b5e235afdb4abf1809cfab4c8e4, type: 3}
+  deliver: {fileID: 8300000, guid: 29752028238404c4a8a1140b6796e5fd, type: 3}
+  complete: {fileID: 8300000, guid: b7be03f7fc93d014c8e27de81b52bde4, type: 3}
 --- !u!1 &1465557951
 GameObject:
   m_ObjectHideFlags: 0

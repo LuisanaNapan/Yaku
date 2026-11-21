@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Yaku.UI;
 
 namespace Yaku.Interaction
 {
@@ -12,13 +13,18 @@ namespace Yaku.Interaction
         private InputAction action;
         private IInteractable target;
         private System.Action modalInteraction;
+        private GameAudio audioController;
 
         public string Prompt => modalInteraction == null ? target?.Prompt : null;
         public bool HasModalInteraction => modalInteraction != null;
 
         public void SetModalInteraction(System.Action action) => modalInteraction = action;
 
-        private void Awake() => action = interactInput.action.Clone();
+        private void Awake()
+        {
+            action = interactInput.action.Clone();
+            audioController = GetComponent<GameAudio>();
+        }
         private void OnEnable() => action?.Enable();
 
         private void OnDisable()
@@ -41,8 +47,11 @@ namespace Yaku.Interaction
             }
 
             target = FindTarget();
-            if (action.WasPressedThisFrame())
-                target?.Interact(gameObject);
+            if (target != null && action.WasPressedThisFrame())
+            {
+                audioController?.Queue(GameAudio.Cue.Interact);
+                target.Interact(gameObject);
+            }
         }
 
         private IInteractable FindTarget()

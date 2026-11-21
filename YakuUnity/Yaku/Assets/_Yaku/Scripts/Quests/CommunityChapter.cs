@@ -112,7 +112,7 @@ namespace Yaku.Quests
             if (Active != null) Active.SetAvailable(true);
 
             if (Active == null || Active.Mission != step.Mission)
-                hud.Notify($"Misión completada · {step.Mission}");
+                hud.Notify($"Misión completada · {step.Mission}", GameAudio.Cue.Complete);
             Render();
             if (IsComplete) Completed?.Invoke();
         }

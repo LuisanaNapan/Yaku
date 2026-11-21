@@ -31,7 +31,7 @@ namespace Yaku.Inventory
             }
 
             gameObject.SetActive(false);
-            hud.Notify($"Recogiste {item.DisplayName} ×{quantity}.");
+            hud.Notify($"Recogiste {item.DisplayName} ×{quantity}.", GameAudio.Cue.Collect);
             Collected?.Invoke(actor);
         }
     }

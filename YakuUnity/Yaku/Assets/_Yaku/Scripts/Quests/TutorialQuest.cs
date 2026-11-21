@@ -99,7 +99,7 @@ namespace Yaku.Quests
             if (actor != gameObject || CurrentStage != Stage.Delivery)
                 return;
             TransitionTo(Stage.Complete);
-            hud.Notify("Misión completada. Diario y embarcadero habilitados.");
+            hud.Notify("Misión completada. Diario y embarcadero habilitados.", GameAudio.Cue.Complete);
         }
 
         private void TransitionTo(Stage next)

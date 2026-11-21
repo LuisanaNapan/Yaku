@@ -25,6 +25,8 @@ namespace Yaku.UI
         private Button[] buttons;
         private readonly UnityEngine.Events.UnityAction[] options = new UnityEngine.Events.UnityAction[4];
         private InputAction back;
+        private GameAudio audioController;
+        private GameObject volumeControls;
         private bool cursorWasLocked;
         private bool loading;
 
@@ -33,6 +35,7 @@ namespace Yaku.UI
         private void Start()
         {
             hud = GetComponent<CommunityHud>();
+            audioController = GetComponent<GameAudio>();
             CreateMenu();
             Show(ScreenState.Title);
         }
@@ -95,7 +98,11 @@ namespace Yaku.UI
                 Place(background.rectTransform, new Vector2(0.5f, 1), new Vector2(0, -220 - i * 59), new Vector2(338, 49));
                 var button = background.gameObject.AddComponent<Button>();
                 int index = i;
-                button.onClick.AddListener(() => options[index]?.Invoke());
+                button.onClick.AddListener(() =>
+                {
+                    audioController?.Queue(GameAudio.Cue.Interact);
+                    options[index]?.Invoke();
+                });
                 button.targetGraphic = background;
                 var colors = button.colors;
                 colors.highlightedColor = new Color(0.83f, 0.91f, 0.67f);
@@ -109,6 +116,8 @@ namespace Yaku.UI
                 label.rectTransform.offsetMin = label.rectTransform.offsetMax = Vector2.zero;
                 buttons[i] = button;
             }
+
+            if (audioController != null) CreateVolumeControls();
 
             if (EventSystem.current == null)
             {
@@ -128,7 +137,15 @@ namespace Yaku.UI
             Cursor.visible = Cursor.lockState != CursorLockMode.Locked;
             if (playing) return;
 
-            foreach (var button in buttons) button.gameObject.SetActive(false);
+            bool showVolume = state == ScreenState.Settings && volumeControls != null;
+            if (volumeControls != null) volumeControls.SetActive(showVolume);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                var button = buttons[i];
+                button.gameObject.SetActive(false);
+                var rect = (RectTransform)button.transform;
+                rect.anchoredPosition = new Vector2(0, (showVolume ? -391 : -220) - i * 53);
+            }
             switch (state)
             {
                 case ScreenState.Title:
@@ -148,7 +165,9 @@ namespace Yaku.UI
                     break;
                 case ScreenState.Settings:
                     heading.text = "Configuración";
-                    detail.text = "WASD · Mover   Shift · Correr\nEspacio · Saltar   E · Interactuar";
+                    detail.text = showVolume
+                        ? "Ajusta el sonido y la pantalla."
+                        : "WASD · Mover   Shift · Correr\nEspacio · Saltar   E · Interactuar";
                     Option(0, Screen.fullScreen ? "Usar modo ventana" : "Usar pantalla completa", ToggleDisplay);
                     Option(1, "Volver", () => Show(previous));
                     break;
@@ -162,6 +181,49 @@ namespace Yaku.UI
                     break;
             }
             EventSystem.current?.SetSelectedGameObject(buttons[0].gameObject);
+        }
+
+        private void CreateVolumeControls()
+        {
+            volumeControls = new GameObject("Volumen", typeof(RectTransform));
+            var root = (RectTransform)volumeControls.transform;
+            root.SetParent(panel, false);
+            Place(root, new Vector2(0.5f, 1f), new Vector2(0, -270), new Vector2(360, 152));
+
+            string[] captions = { "General", "Música", "Efectos" };
+            for (int i = 0; i < captions.Length; i++)
+            {
+                var channel = (GameAudio.Channel)i;
+                float y = 48f - i * 49f;
+                var caption = Label(root, captions[i], 19);
+                caption.text = captions[i];
+                caption.alignment = TextAnchor.MiddleLeft;
+                Place(caption.rectTransform, Vector2.one * 0.5f, new Vector2(-127, y), new Vector2(98, 27));
+                var percent = Label(root, captions[i] + " %", 19);
+                percent.alignment = TextAnchor.MiddleRight;
+                Place(percent.rectTransform, Vector2.one * 0.5f, new Vector2(147, y), new Vector2(55, 27));
+
+                var background = ImageAt(root, captions[i] + " control", Green);
+                Place(background.rectTransform, Vector2.one * 0.5f, new Vector2(9, y), new Vector2(170, 20));
+                var slider = background.gameObject.AddComponent<Slider>();
+                var handleArea = new GameObject("Recorrido", typeof(RectTransform)).GetComponent<RectTransform>();
+                handleArea.SetParent(background.transform, false);
+                handleArea.anchorMin = Vector2.zero;
+                handleArea.anchorMax = Vector2.one;
+                handleArea.offsetMin = new Vector2(9, 0);
+                handleArea.offsetMax = new Vector2(-9, 0);
+                var handle = ImageAt(handleArea, "Valor", Sand);
+                handle.rectTransform.sizeDelta = new Vector2(18, 25);
+                slider.targetGraphic = handle;
+                slider.handleRect = handle.rectTransform;
+                slider.value = audioController.GetVolume(channel);
+                percent.text = $"{Mathf.RoundToInt(slider.value * 100f)}%";
+                slider.onValueChanged.AddListener(value =>
+                {
+                    audioController.SetVolume(channel, value);
+                    percent.text = $"{Mathf.RoundToInt(value * 100f)}%";
+                });
+            }
         }
 
         private void StartGame()

@@ -36,7 +36,7 @@ namespace Yaku.Inventory
             }
 
             Delivered = true;
-            hud.Notify($"{recipient} recibió los suministros.");
+            hud.Notify($"{recipient} recibió los suministros.", GameAudio.Cue.Deliver);
             Completed?.Invoke(actor);
         }
     }
