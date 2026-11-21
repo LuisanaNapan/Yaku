@@ -15,6 +15,7 @@ namespace Yaku.Inventory
         private GameObject panel;
         private InteractionDetector detector;
         private bool inventoryOpen;
+        private bool dirty = true;
 
         private void Start()
         {
@@ -63,6 +64,10 @@ namespace Yaku.Inventory
             panel.SetActive(false);
         }
 
+        private void OnEnable() => GetComponent<PlayerInventory>().Changed += Invalidate;
+        private void OnDisable() => GetComponent<PlayerInventory>().Changed -= Invalidate;
+        private void Invalidate() => dirty = true;
+
         private void Update()
         {
             if (Time.timeScale <= 0f) return;
@@ -71,12 +76,13 @@ namespace Yaku.Inventory
             bool visible = inventoryOpen && !detector.HasModalInteraction;
             if (panel.activeSelf != visible)
                 panel.SetActive(visible);
-            if (panel.activeSelf)
+            if (visible && dirty)
                 Render();
         }
 
         private void Render()
         {
+            dirty = false;
             for (int i = 0; i < labels.Length; i++)
             {
                 var slot = inventory.GetSlot(i);

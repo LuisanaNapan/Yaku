@@ -16,6 +16,7 @@ namespace Yaku.UI
         private Text notification;
         private GameAudio audioController;
         private float notificationUntil;
+        private string previousHint;
 
         private void Awake()
         {
@@ -31,6 +32,8 @@ namespace Yaku.UI
             scaler.matchWidthOrHeight = 0.5f;
             prompt = CreatePanel("Interaction", new Vector2(0.5f, 0f), new Vector2(0, 46), new Vector2(410, 48), 22);
             notification = CreatePanel("Message", new Vector2(0.5f, 1f), new Vector2(0, -51), new Vector2(484, 64), 19);
+            prompt.transform.parent.gameObject.SetActive(false);
+            notification.transform.parent.gameObject.SetActive(false);
             var packHint = CreatePanel("Inventory Hint", new Vector2(1f, 0f), new Vector2(-98, 35),
                 new Vector2(160, 37), 17);
             packHint.text = "<b>[I]</b> Mochila";
@@ -39,9 +42,16 @@ namespace Yaku.UI
         private void LateUpdate()
         {
             string hint = detector.Prompt;
-            prompt.transform.parent.gameObject.SetActive(hint != null);
-            prompt.text = hint == null ? string.Empty : $"<color=#E3C680><b>[E]</b></color> {hint}";
-            notification.transform.parent.gameObject.SetActive(Time.time < notificationUntil);
+            if (previousHint != hint)
+            {
+                previousHint = hint;
+                prompt.transform.parent.gameObject.SetActive(hint != null);
+                prompt.text = hint == null ? string.Empty : $"<color=#E3C680><b>[E]</b></color> {hint}";
+            }
+
+            var message = notification.transform.parent.gameObject;
+            bool visible = Time.time < notificationUntil;
+            if (visible != message.activeSelf) message.SetActive(visible);
         }
 
         public void Notify(string message, GameAudio.Cue cue = GameAudio.Cue.None)

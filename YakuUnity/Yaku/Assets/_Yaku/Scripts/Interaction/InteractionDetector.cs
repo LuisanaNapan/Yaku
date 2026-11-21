@@ -6,6 +6,8 @@ namespace Yaku.Interaction
 {
     public sealed class InteractionDetector : MonoBehaviour
     {
+        private const float ScanInterval = 0.075f;
+        private const float MovementThresholdSquared = 0.04f;
         [SerializeField] private InputActionReference interactInput;
         [SerializeField, Min(0.1f)] private float range = 2f;
 
@@ -14,11 +16,18 @@ namespace Yaku.Interaction
         private IInteractable target;
         private System.Action modalInteraction;
         private GameAudio audioController;
+        private Vector3 lastCenter;
+        private float nextScan;
 
-        public string Prompt => modalInteraction == null ? target?.Prompt : null;
+        public string Prompt => modalInteraction == null && target is Behaviour candidate && candidate.isActiveAndEnabled
+            ? target.Prompt : null;
         public bool HasModalInteraction => modalInteraction != null;
 
-        public void SetModalInteraction(System.Action action) => modalInteraction = action;
+        public void SetModalInteraction(System.Action action)
+        {
+            modalInteraction = action;
+            nextScan = 0f;
+        }
 
         private void Awake()
         {
@@ -46,17 +55,25 @@ namespace Yaku.Interaction
                 return;
             }
 
-            target = FindTarget();
-            if (target != null && action.WasPressedThisFrame())
+            bool pressed = action.WasPressedThisFrame();
+            Vector3 center = transform.position + Vector3.up * 0.9f;
+            if (pressed || Time.time >= nextScan || (center - lastCenter).sqrMagnitude >= MovementThresholdSquared)
+            {
+                target = FindTarget(center);
+                lastCenter = center;
+                nextScan = Time.time + ScanInterval;
+            }
+
+            if (target != null && pressed)
             {
                 audioController?.Queue(GameAudio.Cue.Interact);
                 target.Interact(gameObject);
+                nextScan = 0f;
             }
         }
 
-        private IInteractable FindTarget()
+        private IInteractable FindTarget(Vector3 center)
         {
-            Vector3 center = transform.position + Vector3.up * 0.9f;
             int count = Physics.OverlapSphereNonAlloc(center, range, nearby, ~0, QueryTriggerInteraction.Collide);
             Collider[] hits = nearby;
             if (count == nearby.Length)
