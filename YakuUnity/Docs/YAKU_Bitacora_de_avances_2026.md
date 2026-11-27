@@ -28,11 +28,13 @@ Se aprobó el avance 3 con carrera, salto, gravedad y animaciones corporales pro
 
 | Avance | Funcionalidad | Hash | Fecha real de implementación | Pruebas realizadas o pendientes |
 | --- | --- | --- | --- | --- |
-| 6 | Detección de objetos interactivos y aviso contextual de **E**. | Pendiente | Pendiente | Pendiente. Entrar y salir del alcance y comprobar cuál de dos objetos cercanos recibe la interacción. |
-| 7 | Diálogos configurables con Elena, Tomás y Rosa. | Pendiente | Pendiente | Pendiente. Hablar con los tres personajes, elegir una respuesta y comprobar que se recuperan los controles al cerrar el diálogo. |
-| 8 | Inventario de seis espacios, límites por pila y objetos recolectables. | Pendiente | Pendiente | Pendiente. Llenar el inventario y comprobar que un objeto rechazado sigue disponible en la escena. |
-| 9 | Validación de entregas por destinatario, objeto, cantidad y procedencia. | Pendiente | Pendiente | Pendiente. Probar un destinatario incorrecto, un objeto ausente y una entrega repetida. Verificar el consumo de inventario solo en la entrega válida. |
-| 10 | Progresión de misiones, objetivo activo en el HUD y tutorial «El primer encargo». | Pendiente | Pendiente | Pendiente. Completar el tutorial sin ayuda externa y verificar que la ribera se habilita al finalizar. |
+| 6 | Detección de objetos interactivos y aviso contextual de **E**. | Ver historial de la rama | 27 de noviembre de 2026 | Play Mode mediante Unity MCP. Cinco comprobaciones aprobadas de alcance, aviso, selección por proximidad y pulsaciones de E. Sin errores ni advertencias. |
+| 7 | Diálogos configurables con Elena, Tomás y Rosa. | Ver historial de la rama | 27 de noviembre de 2026 | 15 comprobaciones en Play Mode mediante Unity MCP. Referencias, aviso, apertura, avance, cierre y recuperación del movimiento con Elena, Tomás y Rosa. Sin errores ni advertencias. |
+| 8 | Inventario de seis espacios, límites por pila y objetos recolectables. | Ver historial de la rama | 27 de noviembre de 2026 | Nueve comprobaciones aprobadas en Unity MCP, incluidos seis espacios, apilado, retiro, rechazo por capacidad, cantidades inválidas y HUD con icono. Consola limpia. |
+| 9 | Validación de entregas por destinatario, objeto, cantidad y procedencia. | Ver historial de la rama | 27 de noviembre de 2026 | Cinco comprobaciones en Play Mode. Recogida con E, inventario lleno, entrega sin recursos, descuento correcto y prevención del descuento repetido. Consola limpia. |
+| 10 | Progresión de misiones, objetivo activo en el HUD y tutorial «El primer encargo». | Ver historial de la rama | 27 de noviembre de 2026 | Doce comprobaciones integradas. Recorrido físico de la posta al almacén y a Tomás, orden de objetivos, entrega con E, confirmación, diario y acceso al embarcadero. Además, 39 comprobaciones de regresión de cámara, colisiones, movimiento y animación. Consola limpia. |
+
+Los avances 6–10 se implementaron y registraron el **27 de noviembre de 2026**, en hora de Lima (UTC−5). Las fechas de Git corresponden al registro real de cada avance. Los commits 6–9 se registraron a las `13:01:50`, `13:15:13`, `13:17:22` y `13:18:57`, respectivamente. El commit que incorpora el cierre del bloque conserva su hora exacta en Git.
 
 ## Bloque 3 · Semana académica del 21 de noviembre de 2026
 
