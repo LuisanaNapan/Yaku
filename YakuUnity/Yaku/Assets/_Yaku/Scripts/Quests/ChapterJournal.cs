@@ -21,6 +21,7 @@ namespace Yaku.Quests
         private Text label;
         private bool restoreMovement;
         private bool observations;
+        private bool finale;
 
         public bool IsOpen => label != null && label.transform.parent.gameObject.activeSelf;
 
@@ -35,7 +36,7 @@ namespace Yaku.Quests
             tutorial.UseChapterJournal = true;
         }
 
-        private void OnEnable() => chapter.Completed += Open;
+        private void OnEnable() => chapter.Completed += OpenFinale;
 
         private void Start()
         {
@@ -57,7 +58,7 @@ namespace Yaku.Quests
                 else Open();
                 return;
             }
-            if (!IsOpen) return;
+            if (!IsOpen || finale) return;
 
             if (keyboard.digit1Key.wasPressedThisFrame)
             {
@@ -71,11 +72,16 @@ namespace Yaku.Quests
             }
         }
 
-        private void Open()
+        private void Open() => Open(false);
+
+        private void OpenFinale() => Open(true);
+
+        private void Open(bool showFinale)
         {
             if (label == null || IsOpen || detector.HasModalInteraction || !controller.isGrounded) return;
 
             observations = false;
+            finale = showFinale;
             restoreMovement = movement.enabled;
             movement.enabled = false;
             detector.SetModalInteraction(Close);
@@ -94,8 +100,22 @@ namespace Yaku.Quests
 
         private void Render()
         {
+            var panel = (RectTransform)label.transform.parent;
+            panel.sizeDelta = finale ? new Vector2(700, 310) : new Vector2(770, 510);
+            label.alignment = finale ? TextAnchor.MiddleCenter : TextAnchor.MiddleLeft;
+            if (finale)
+            {
+                label.text = "<size=31><color=#E3C680><b>Capítulo completado</b></color></size>\n\n" +
+                    "<b>Elena</b> · Gracias, Yaku. Hoy cuidamos juntos a la comunidad.\n\n" +
+                    "Consulta los avisos sobre el agua. Verifica el origen de los alimentos.\n" +
+                    "Busca orientación en la posta y comparte los suministros.\n" +
+                    $"<b>Entregas completadas · {distribution.DeliveredCount}/{distribution.TotalCount}</b>\n\n" +
+                    "<size=17>[E/J] Seguir explorando     [Esc] Menú de pausa</size>";
+                return;
+            }
+
             var text = new StringBuilder();
-            text.AppendLine(chapter.IsComplete ? "<b>Capítulo completado · Guardianes de la Vida</b>" : "<b>Diario de Yaku</b>");
+            text.AppendLine("<b>Diario de Yaku</b>");
             text.AppendLine("[1] Resumen     [2] Aprendizajes     [J/E] Cerrar").AppendLine();
             if (observations)
                 RenderObservations(text);
@@ -143,7 +163,7 @@ namespace Yaku.Quests
 
         private void OnDisable()
         {
-            chapter.Completed -= Open;
+            chapter.Completed -= OpenFinale;
             Close();
         }
     }

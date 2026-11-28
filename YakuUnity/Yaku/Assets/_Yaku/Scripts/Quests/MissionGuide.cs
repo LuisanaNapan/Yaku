@@ -19,7 +19,13 @@ namespace Yaku.Quests
         private RectTransform canvasRect;
         private Transform focus;
 
-        public void FocusOn(Transform point) => focus = point;
+        private float focusHeight;
+
+        public void FocusOn(Transform point, float height = 0f)
+        {
+            focus = point;
+            focusHeight = height;
+        }
 
         private void Start()
         {
@@ -50,7 +56,7 @@ namespace Yaku.Quests
             markerRect.gameObject.SetActive(visible);
             if (!visible) return;
 
-            float markerHeight = focus == null ? 1.85f : 4.5f;
+            float markerHeight = focus == null ? 1.85f : focusHeight;
             Vector3 screen = view.WorldToViewportPoint(destination.position + Vector3.up * markerHeight);
             Vector2 direction = new Vector2(screen.x - 0.5f, screen.y - 0.5f);
             if (screen.z <= 0f)

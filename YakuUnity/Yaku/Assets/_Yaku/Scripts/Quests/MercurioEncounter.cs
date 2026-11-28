@@ -40,7 +40,17 @@ namespace Yaku.Quests
 
         private void OnObjectiveCompleted(ChapterObjective objective)
         {
-            if (seen || objective != riverMonitoring || silhouette == null) return;
+            if (silhouette == null) return;
+            if (objective != riverMonitoring)
+            {
+                if (silhouette.activeSelf)
+                {
+                    StopAllCoroutines();
+                    Hide();
+                }
+                return;
+            }
+            if (seen) return;
             seen = true;
             StartCoroutine(Reveal());
         }
@@ -49,7 +59,9 @@ namespace Yaku.Quests
         {
             Transform figure = silhouette.transform;
             silhouette.SetActive(true);
-            guide.FocusOn(figure);
+            var visual = silhouette.GetComponentInChildren<Renderer>();
+            float markerHeight = visual == null ? 5f : visual.bounds.max.y - figure.position.y + 0.65f;
+            guide.FocusOn(figure, markerHeight);
             hud.Notify("Yaku · ¿Qué fue esa sombra en la mina?", GameAudio.Cue.Interact);
 
             float elapsed = 0f;
