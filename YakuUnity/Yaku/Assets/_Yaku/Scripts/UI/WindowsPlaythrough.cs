@@ -59,34 +59,49 @@ namespace Yaku.UI
             yield return null;
             Require(Vector3.Distance(menu.transform.position, origin) > 0.2f, "movimiento mediante WASD");
 
+            float startHeight = menu.transform.position.y;
+            float jumpPeak = startHeight;
+            InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Space));
+            yield return null;
+            yield return null;
+            InputSystem.QueueStateEvent(keyboard, new KeyboardState());
+            float landingDeadline = Time.realtimeSinceStartup + 1.5f;
+            while (Time.realtimeSinceStartup < landingDeadline)
+            {
+                jumpPeak = Mathf.Max(jumpPeak, menu.transform.position.y);
+                if (jumpPeak > startHeight + 0.3f && controller.isGrounded) break;
+                yield return null;
+            }
+            Require(jumpPeak > startHeight + 0.3f && controller.isGrounded, "salto y aterrizaje");
+
             yield return Press(Key.Escape);
             Require(Time.timeScale == 0f && !menu.IsPlaying, "pausa de Windows");
             yield return Press(Key.Escape);
             Require(Time.timeScale == 1f && menu.IsPlaying, "reanudación");
 
             yield return Speak(1.10f, 5.40f);
-            yield return At(-4.95f, 2.40f);
-            yield return At(-2.51f, -3.97f);
+            yield return At(-13.95f, 5.40f);
+            yield return At(-12.51f, -12.97f);
             Require(tutorial.CurrentStage == TutorialQuest.Stage.Complete, "tutorial y entrega inicial");
 
             yield return Speak(1.10f, 5.40f);
-            yield return Speak(3.80f, 5.40f);
-            yield return At(5.00f, 3.20f);
+            yield return Speak(4.55f, 15.72f);
+            yield return At(4.72f, 17.34f);
             yield return Press(Key.Digit1);
             Require(chapter.CompletedCount == 2, "elección incorrecta de agua rechazada");
             yield return Answer(Key.Digit2);
             yield return Speak(1.10f, 5.40f);
             Require(chapter.CompletedCount == 4, "misión del agua");
 
-            yield return Speak(2.65f, 9.70f);
-            yield return Speak(0.90f, 9.65f);
-            yield return At(0.90f, 9.65f);
+            yield return Speak(0.28f, 26.55f);
+            yield return Speak(1.44f, 26.24f);
+            yield return At(1.44f, 26.24f);
             yield return Answer(Key.Digit2);
-            yield return At(2.65f, 9.70f);
+            yield return At(0.28f, 26.55f);
             yield return Answer(Key.Digit2);
             Require(chapter.CompletedCount == 8, "misión de alimentación");
 
-            yield return Speak(-2.51f, -3.97f);
+            yield return Speak(-12.51f, -12.97f);
             yield return Speak(1.10f, 5.40f);
             yield return At(0.05f, 5.55f);
             yield return Answer(Key.Digit1);
@@ -95,11 +110,11 @@ namespace Yaku.UI
             Require(chapter.CompletedCount == 12, "misión de orientación");
 
             yield return Speak(1.10f, 5.40f);
-            yield return At(-5.85f, 2.35f);
-            yield return At(-4.95f, 2.90f);
-            yield return At(-4.00f, 2.40f);
-            yield return At(-2.51f, -3.97f);
-            yield return At(2.65f, 9.70f);
+            yield return At(-14.85f, 5.35f);
+            yield return At(-13.95f, 5.90f);
+            yield return At(-13.00f, 5.40f);
+            yield return At(-12.51f, -12.97f);
+            yield return At(0.28f, 26.55f);
             yield return At(1.10f, 5.40f);
             Require(chapter.CompletedCount == 14, "tres recogidas y entregas");
             yield return At(1.10f, 5.40f);
