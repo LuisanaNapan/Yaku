@@ -14,6 +14,7 @@ namespace Yaku.Interaction
         private System.Action modalInteraction;
 
         public string Prompt => modalInteraction == null ? target?.Prompt : null;
+        public bool HasModalInteraction => modalInteraction != null;
 
         public void SetModalInteraction(System.Action action) => modalInteraction = action;
 

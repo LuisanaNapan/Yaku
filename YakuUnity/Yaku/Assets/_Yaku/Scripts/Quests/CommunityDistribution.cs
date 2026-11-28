@@ -36,8 +36,9 @@ namespace Yaku.Quests
         private bool available;
 
         public int DeliveredCount => stops.Count(stop => stop.Delivery.Delivered);
-        public bool IsComplete => DeliveredCount == stops.Length;
-        public string Status => $"{DeliveredCount}/{stops.Length} · " + string.Join(" · ", stops.Select(stop => stop.Status));
+        public int TotalCount => stops.Length;
+        public bool IsComplete => DeliveredCount == TotalCount;
+        public string Status => $"{DeliveredCount}/{TotalCount} · " + string.Join(" · ", stops.Select(stop => stop.Status));
 
         private void OnEnable()
         {

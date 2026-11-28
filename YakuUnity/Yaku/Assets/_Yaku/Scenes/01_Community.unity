@@ -8621,7 +8621,7 @@ MonoBehaviour:
   correctChoice: 0
   correctFeedback: 
   retryFeedback: 
-  observation: "La familia recibi\xF3 agua de la fuente evaluada en la simulaci\xF3n."
+  observation: "La vista y el tratamiento dom\xE9stico no verifican el mercurio disuelto. Elegimos la fuente evaluada y consultamos el aviso."
   reward: {fileID: 0}
   distribution: {fileID: 0}
 --- !u!1 &643739736
@@ -8915,7 +8915,7 @@ MonoBehaviour:
   correctChoice: 2
   correctFeedback: "Elena registra la consulta y orienta a la familia. Los primeros auxilios de una herida no tratan la exposici\xF3n a mercurio."
   retryFeedback: "Cada situaci\xF3n se atiende de forma distinta. Comunica lo observado al personal de salud."
-  observation: "La familia recibi\xF3 orientaci\xF3n para buscar evaluaci\xF3n profesional ante la sospecha de exposici\xF3n."
+  observation: "El personal de salud orienta ante una sospecha de exposici\xF3n. La ayuda por una herida es una situaci\xF3n diferente."
   reward: {fileID: 0}
   distribution: {fileID: 0}
 --- !u!1 &671363051
@@ -9375,6 +9375,38 @@ Transform:
   - {fileID: 394041938}
   - {fileID: 945692916}
   m_Father: {fileID: 1745967435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &697781231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 697781232}
+  m_Layer: 0
+  m_Name: Chapter - Closing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &697781232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697781231}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2103635584}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &699051929
 GameObject:
@@ -14225,7 +14257,7 @@ MonoBehaviour:
   correctChoice: 0
   correctFeedback: "Elena confirma las tres entregas. Comparar informaci\xF3n ayuda a que los recursos adecuados lleguen a cada familia."
   retryFeedback: Piensa en la evidencia que consultaste en el sendero de la ribera.
-  observation: "Elena confirm\xF3 las tres entregas y la justificaci\xF3n sobre la fuente de agua."
+  observation: Tres paquetes llegaron a sus destinatarios. La evidencia y las necesidades de las familias guiaron el reparto.
   reward: {fileID: 0}
   distribution: {fileID: 0}
 --- !u!1 &1039043408
@@ -14389,6 +14421,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1453392285}
+    - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1453392286}
   m_SourcePrefab: {fileID: 100100000, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
 --- !u!4 &1039057300 stripped
 Transform:
@@ -16149,7 +16184,7 @@ MonoBehaviour:
   correctChoice: 1
   correctFeedback: "Rosa reconoce tu decisi\xF3n informada y te entrega un suministro autorizado. En la vida real, verifica los avisos sanitarios de tu zona."
   retryFeedback: "La cocci\xF3n y el aspecto no establecen el contenido de mercurio. Consulta la procedencia y los avisos sanitarios."
-  observation: "Decisi\xF3n informada: se comprob\xF3 procedencia y orientaci\xF3n sanitaria."
+  observation: "El mercurio puede acumularse en la cadena alimentaria. La elecci\xF3n se bas\xF3 en procedencia documentada y avisos vigentes."
   reward: {fileID: 11400000, guid: 8a57d0112d7299f469be702822d9d870, type: 2}
   distribution: {fileID: 0}
 --- !u!1 &1201087572
@@ -19945,6 +19980,7 @@ MonoBehaviour:
   - {fileID: 1269365562}
   - {fileID: 1066468655}
   - {fileID: 1038869993}
+  - {fileID: 2103635585}
 --- !u!114 &1453392285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19970,6 +20006,18 @@ MonoBehaviour:
     recipient: {fileID: 179525889}
     pickup: {fileID: 827689615}
     delivery: {fileID: 523623841}
+--- !u!114 &1453392286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453392266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb5cc4af24f1fc498c5a746c6aafcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterJournal
 --- !u!1 &1465557951
 GameObject:
   m_ObjectHideFlags: 0
@@ -27574,6 +27622,64 @@ CapsuleCollider:
   m_Height: 1.7582481
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2103635583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2103635584}
+  - component: {fileID: 2103635585}
+  m_Layer: 0
+  m_Name: Chapter Closing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2103635584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103635583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 697781232}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103635585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103635583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d07892c85c81584383e43290ae02fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterObjective
+  mission: "Cierre del cap\xEDtulo"
+  instruction: Escucha el reconocimiento de Elena.
+  prompt: Escuchar el reconocimiento de Elena
+  conversation: {fileID: 11400000, guid: 19fa515db50249647b2b7505aa4cedac, type: 2}
+  npc: {fileID: 179525889}
+  interactionTrigger: {fileID: 0}
+  question: 
+  choices: []
+  correctChoice: 0
+  correctFeedback: 
+  retryFeedback: 
+  observation: "Ayudar a la comunidad implica escuchar, comprobar la informaci\xF3n y repartir los recursos seg\xFAn las necesidades."
+  reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &2105051460
 GameObject:
   m_ObjectHideFlags: 0
@@ -28073,3 +28179,4 @@ SceneRoots:
   - {fileID: 1068165593}
   - {fileID: 2105051461}
   - {fileID: 906411530}
+  - {fileID: 697781232}

@@ -31,6 +31,7 @@ namespace Yaku.Quests
         private Text journal;
 
         public Stage CurrentStage { get; private set; }
+        public bool UseChapterJournal { get; set; }
 
         public void SetChapterObjectiveVisible(bool visible)
         {
@@ -64,15 +65,18 @@ namespace Yaku.Quests
             objective = hud.CreatePanel("Objective", new Vector2(0, 1), new Vector2(224, -86),
                 new Vector2(406, 100), 19);
             objective.alignment = TextAnchor.MiddleLeft;
-            journal = hud.CreatePanel("Journal", new Vector2(0.5f, 0.5f), Vector2.zero,
-                new Vector2(620, 210), 23);
-            journal.transform.parent.gameObject.SetActive(false);
+            if (!UseChapterJournal)
+            {
+                journal = hud.CreatePanel("Journal", new Vector2(0.5f, 0.5f), Vector2.zero,
+                    new Vector2(620, 210), 23);
+                journal.transform.parent.gameObject.SetActive(false);
+            }
             Render();
         }
 
         private void Update()
         {
-            if (CurrentStage != Stage.Complete || Keyboard.current?.jKey.wasPressedThisFrame != true)
+            if (journal == null || CurrentStage != Stage.Complete || Keyboard.current?.jKey.wasPressedThisFrame != true)
                 return;
             var panel = journal.transform.parent.gameObject;
             panel.SetActive(!panel.activeSelf);
@@ -120,11 +124,13 @@ namespace Yaku.Quests
             if (CurrentStage == Stage.Complete)
             {
                 objective.text = $"<b>{quest.Title}</b> · {quest.ObjectiveCount}/{quest.ObjectiveCount}\nCompletada · [J] Diario";
-                journal.text = $"<b>{quest.Title}</b>\n\n{quest.Completion}\n\n[J] Cerrar";
+                if (journal != null)
+                    journal.text = $"<b>{quest.Title}</b>\n\n{quest.Completion}\n\n[J] Cerrar";
                 return;
             }
             int index = (int)CurrentStage;
-            objective.text = $"<b>{quest.Title}</b> · {index}/{quest.ObjectiveCount}\n{quest.GetObjective(index)}";
+            string journalHint = UseChapterJournal ? " · [J] Diario" : string.Empty;
+            objective.text = $"<b>{quest.Title}</b> · {index}/{quest.ObjectiveCount}{journalHint}\n{quest.GetObjective(index)}";
         }
     }
 }

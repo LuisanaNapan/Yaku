@@ -18,6 +18,7 @@ namespace Yaku.Quests
         private CharacterController controller;
         private ChapterObjective active;
         private Action onCorrect;
+        private Action onIncorrect;
         private bool restoreMovement;
         private bool accepted;
 
@@ -34,12 +35,13 @@ namespace Yaku.Quests
             message.transform.parent.gameObject.SetActive(false);
         }
 
-        public void Open(ChapterObjective step, Action completed)
+        public void Open(ChapterObjective step, Action completed, Action incorrect)
         {
             if (message == null || IsOpen || !controller.isGrounded) return;
 
             active = step;
             onCorrect = completed;
+            onIncorrect = incorrect;
             accepted = false;
             restoreMovement = movement.enabled;
             movement.enabled = false;
@@ -67,7 +69,10 @@ namespace Yaku.Quests
             if (accepted)
                 message.text = $"<b>Decisión informada</b>\n\n{active.CorrectFeedback}\n\n[E] Continuar";
             else
+            {
+                onIncorrect?.Invoke();
                 Render(active.RetryFeedback);
+            }
         }
 
         private void Render(string feedback = null)
@@ -93,6 +98,7 @@ namespace Yaku.Quests
             if (!IsOpen) return;
             active = null;
             onCorrect = null;
+            onIncorrect = null;
             message.transform.parent.gameObject.SetActive(false);
             detector.SetModalInteraction(null);
             movement.enabled = restoreMovement;

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Yaku.Dialogue;
@@ -19,8 +21,13 @@ namespace Yaku.Quests
         private int current = -1;
 
         public int CompletedCount => Mathf.Max(current, 0);
+        public int CorrectDecisions { get; private set; }
+        public int IncorrectDecisions { get; private set; }
+        public IReadOnlyList<ChapterObjective> Objectives => objectives;
+        public bool IsComplete => current == objectives.Length;
         public ChapterObjective Active => current >= 0 && current < objectives.Length ? objectives[current] : null;
         public string LastObservation { get; private set; }
+        public event Action Completed;
 
         private void Awake()
         {
@@ -65,7 +72,7 @@ namespace Yaku.Quests
         {
             if (step != Active) return;
             if (step.HasDecision)
-                decision.Open(step, () => Complete(step));
+                decision.Open(step, () => Complete(step), () => IncorrectDecisions++);
             else
                 dialogue.Open(step.Conversation);
         }
@@ -98,6 +105,7 @@ namespace Yaku.Quests
             }
 
             step.SetAvailable(false);
+            if (step.HasDecision) CorrectDecisions++;
             if (!string.IsNullOrEmpty(step.Observation))
                 LastObservation = step.Observation;
             current++;
@@ -106,14 +114,15 @@ namespace Yaku.Quests
             if (Active == null || Active.Mission != step.Mission)
                 hud.Notify($"Misión completada · {step.Mission}");
             Render();
+            if (IsComplete) Completed?.Invoke();
         }
 
         private void Render()
         {
             var step = Active;
             objectiveText.text = step == null
-                ? $"<b>{objectives[objectives.Length - 1].Mission}</b>\nCompletada"
-                : $"<b>{step.Mission}</b>\n{step.Instruction}";
+                ? "<b>Capítulo completado</b> · [J] Diario"
+                : $"<b>{step.Mission}</b> · [J] Diario\n{step.Instruction}";
             if (step != null && step.Distribution != null)
                 objectiveText.text += $"\n<size=15>{step.Distribution.Status}</size>";
         }

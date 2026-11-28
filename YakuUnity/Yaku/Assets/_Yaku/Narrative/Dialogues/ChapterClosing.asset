@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01d3e3d4711f0840936519543a8ff99, type: 3}
+  m_Name: ChapterClosing
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Dialogue.DialogueData
+  speaker: Elena
+  portrait: {fileID: 0}
+  lines:
+  - "Gracias, Yaku. Escuchaste a las familias, buscaste informaci\xF3n y compartiste los recursos con quienes los necesitaban."
+  - Cuando surja otra duda, recurre a los avisos vigentes y al personal de salud. Hoy dimos un paso para cuidar juntos la comunidad.
+  - "Las decisiones y entregas de este cap\xEDtulo quedaron registradas en tu diario."
