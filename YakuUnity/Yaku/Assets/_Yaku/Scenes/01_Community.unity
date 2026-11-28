@@ -24712,6 +24712,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1453392289}
+    - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1453392297}
   m_SourcePrefab: {fileID: 100100000, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
 --- !u!4 &1039057300 stripped
 Transform:
@@ -34369,6 +34372,20 @@ MonoBehaviour:
   collect: {fileID: 8300000, guid: 370d1b5e235afdb4abf1809cfab4c8e4, type: 3}
   deliver: {fileID: 8300000, guid: 29752028238404c4a8a1140b6796e5fd, type: 3}
   complete: {fileID: 8300000, guid: b7be03f7fc93d014c8e27de81b52bde4, type: 3}
+--- !u!114 &1453392297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453392266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0a9ce922fe89e4f8865facb0b5c283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.MissionGuide
+  posta: {fileID: 1917784820}
+  view: {fileID: 1103139991}
 --- !u!1 &1461109003
 GameObject:
   m_ObjectHideFlags: 0
@@ -44894,6 +44911,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917569609}
   m_Mesh: {fileID: 4300000, guid: b730c7c7c15722943b6dcf001c7c32f7, type: 2}
+--- !u!4 &1917784820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 473050857211175668, guid: ff7f15d456bf61740a73de1af1acf5cd, type: 3}
+  m_PrefabInstance: {fileID: 179525888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1919021904
 GameObject:
   m_ObjectHideFlags: 0
