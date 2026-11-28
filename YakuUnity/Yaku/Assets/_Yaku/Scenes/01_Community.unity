@@ -8633,6 +8633,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645667859}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &661887911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 661887912}
+  - component: {fileID: 661887913}
+  m_Layer: 0
+  m_Name: Health Referral
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &661887912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661887911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2105051461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &661887913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661887911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d07892c85c81584383e43290ae02fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterObjective
+  mission: Atender y orientar
+  instruction: "Confirma con Elena c\xF3mo orientar a la familia."
+  prompt: "Confirmar orientaci\xF3n con Elena"
+  conversation: {fileID: 0}
+  npc: {fileID: 179525889}
+  interactionTrigger: {fileID: 0}
+  question: "\xBFQu\xE9 hacer si una familia sospecha exposici\xF3n a mercurio?"
+  choices:
+  - Usar los primeros auxilios de la herida como tratamiento.
+  - Diagnosticar por lo que vemos.
+  - "Buscar orientaci\xF3n profesional y compartir lo observado."
+  correctChoice: 2
+  correctFeedback: "Elena registra la consulta y orienta a la familia. Los primeros auxilios de una herida no tratan la exposici\xF3n a mercurio."
+  retryFeedback: "Cada situaci\xF3n se atiende de forma distinta. Comunica lo observado al personal de salud."
+  observation: "La familia recibi\xF3 orientaci\xF3n para buscar evaluaci\xF3n profesional ante la sospecha de exposici\xF3n."
+  reward: {fileID: 0}
 --- !u!1 &671363051
 GameObject:
   m_ObjectHideFlags: 0
@@ -19129,6 +19189,10 @@ MonoBehaviour:
   - {fileID: 1912983111}
   - {fileID: 1220772270}
   - {fileID: 1197847187}
+  - {fileID: 1704187751}
+  - {fileID: 1577505187}
+  - {fileID: 1728923312}
+  - {fileID: 661887913}
 --- !u!1 &1465557951
 GameObject:
   m_ObjectHideFlags: 0
@@ -20250,6 +20314,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569724991}
   m_Mesh: {fileID: 4300000, guid: 334cc63ca52e89340a3f13a213d93015, type: 2}
+--- !u!1 &1577505185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1577505186}
+  - component: {fileID: 1577505187}
+  m_Layer: 0
+  m_Name: Health Guidance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1577505186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577505185}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2105051461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1577505187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577505185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d07892c85c81584383e43290ae02fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterObjective
+  mission: Atender y orientar
+  instruction: Comunica las dos necesidades a Elena en la posta.
+  prompt: Informar a Elena
+  conversation: {fileID: 11400000, guid: 73f8afd0e9594fd43808a92a11b72762, type: 2}
+  npc: {fileID: 179525889}
+  interactionTrigger: {fileID: 0}
+  question: 
+  choices: []
+  correctChoice: 0
+  correctFeedback: 
+  retryFeedback: 
+  observation: "La posta registra por separado el incidente y la solicitud de orientaci\xF3n profesional."
+  reward: {fileID: 0}
 --- !u!1 &1579777320
 GameObject:
   m_ObjectHideFlags: 0
@@ -21644,6 +21765,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703890141}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1704187749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1704187750}
+  - component: {fileID: 1704187751}
+  m_Layer: 0
+  m_Name: Health Incident
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1704187750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704187749}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2105051461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1704187751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704187749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d07892c85c81584383e43290ae02fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterObjective
+  mission: Atender y orientar
+  instruction: "Pregunta a Tom\xE1s qu\xE9 ocurri\xF3 en la comunidad."
+  prompt: "Preguntar a Tom\xE1s por el incidente"
+  conversation: {fileID: 11400000, guid: a9f2717263b48db43a6efeb5dbbb329d, type: 2}
+  npc: {fileID: 250903809}
+  interactionTrigger: {fileID: 0}
+  question: 
+  choices: []
+  correctChoice: 0
+  correctFeedback: 
+  retryFeedback: 
+  observation: "Tom\xE1s solicita acompa\xF1amiento por una herida y una familia solicita orientaci\xF3n sobre exposici\xF3n."
+  reward: {fileID: 0}
 --- !u!1 &1717612460
 GameObject:
   m_ObjectHideFlags: 0
@@ -21958,6 +22136,89 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727829323}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1728923309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1728923310}
+  - component: {fileID: 1728923312}
+  - component: {fileID: 1728923311}
+  m_Layer: 0
+  m_Name: Health Supplies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1728923310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728923309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05, y: 0.04, z: 5.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2044663795}
+  m_Father: {fileID: 2105051461}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1728923311
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728923309}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.8, y: 1.3, z: 0.8}
+  m_Center: {x: 0, y: 0.65, z: 0}
+--- !u!114 &1728923312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728923309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d07892c85c81584383e43290ae02fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterObjective
+  mission: Atender y orientar
+  instruction: Consulta el tablero de la posta y elige el apoyo indicado.
+  prompt: Consultar tablero de apoyo
+  conversation: {fileID: 0}
+  npc: {fileID: 0}
+  interactionTrigger: {fileID: 1728923311}
+  question: "\xBFQu\xE9 apoyo pidi\xF3 Elena para el incidente de Tom\xE1s?"
+  choices:
+  - "El paquete b\xE1sico identificado por la posta."
+  - "Un remedio improvisado con ingredientes del almac\xE9n."
+  - La ficha de alimentos en lugar del paquete.
+  correctChoice: 0
+  correctFeedback: "Entrega el paquete al personal de la posta y deja que eval\xFAe la herida."
+  retryFeedback: Revisa la solicitud de la posta. Los recursos cumplen funciones diferentes.
+  observation: "Se seleccion\xF3 el paquete b\xE1sico solicitado por la posta para el incidente."
+  reward: {fileID: 0}
 --- !u!1001 &1743641689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25903,6 +26164,96 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039346454}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2044663794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2044663795}
+  - component: {fileID: 2044663797}
+  - component: {fileID: 2044663796}
+  m_Layer: 0
+  m_Name: Tablero de apoyo de la posta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2044663795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044663794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.77, z: 0.48}
+  m_LocalScale: {x: 0.62, y: 0.58, z: 0.11}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1728923310}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2044663796
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044663794}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0893535a8f98cd440a75c57a9d18e78f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2044663797
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044663794}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2044928214
 GameObject:
   m_ObjectHideFlags: 0
@@ -26441,6 +26792,41 @@ CapsuleCollider:
   m_Height: 1.7582481
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2105051460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105051461}
+  m_Layer: 0
+  m_Name: Chapter - Health
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105051461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105051460}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1704187750}
+  - {fileID: 1577505186}
+  - {fileID: 1728923310}
+  - {fileID: 661887912}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2112206940
 GameObject:
   m_ObjectHideFlags: 0
@@ -26903,3 +27289,4 @@ SceneRoots:
   - {fileID: 1879591185}
   - {fileID: 671363052}
   - {fileID: 1068165593}
+  - {fileID: 2105051461}
