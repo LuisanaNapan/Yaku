@@ -15,5 +15,12 @@ MonoBehaviour:
   speaker: Rosa
   portrait: {fileID: 0}
   lines:
-  - "Quiero preparar comida para las familias. Cerca de mi casa dej\xE9 una ficha con recomendaciones."
-  - "El metilmercurio puede acumularse en los peces. Algunos depredadores acumulan m\xE1s al comer otros peces; por eso importan la especie, el origen y los avisos vigentes."
+  - Me preocupa la comida de las familias. Traje tres opciones, pero no basta verlas.
+  - En ciertos peces puede acumularse metilmercurio a lo largo de la cadena alimentaria.
+  - La especie, el origen y los avisos vigentes importan para elegir con cuidado.
+  - "Lee la ficha junto a mi casa; despu\xE9s compara los tres lotes."
+  voiceLines:
+  - {fileID: 8300000, guid: d9b311b1b88a7194287c5573984164dd, type: 3}
+  - {fileID: 8300000, guid: 6735967380b827947a78b2d2fa0edd79, type: 3}
+  - {fileID: 8300000, guid: 79368bf954a37e24795666d77a302e7d, type: 3}
+  - {fileID: 8300000, guid: a444f24e4bacf8b4985675084f849ed8, type: 3}

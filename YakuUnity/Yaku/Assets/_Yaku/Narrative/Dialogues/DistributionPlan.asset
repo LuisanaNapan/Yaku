@@ -15,5 +15,12 @@ MonoBehaviour:
   speaker: Elena
   portrait: {fileID: 0}
   lines:
-  - "El almac\xE9n reserv\xF3 tres paquetes. Tom\xE1s necesita dos bidones de la fuente verificada; Rosa recibir\xE1 alimento documentado."
-  - "Trae a la posta un paquete b\xE1sico. Revisa el progreso de las tres entregas y regresa conmigo al terminar."
+  - "Ya tenemos un plan, Yaku, pero lo dif\xEDcil es hacer que llegue a cada familia."
+  - "Tom\xE1s recibir\xE1 dos bidones de la fuente verificada; Rosa, el alimento documentado."
+  - "Trae a la posta el paquete b\xE1sico reservado para atenci\xF3n comunitaria."
+  - Revisa las tres entregas en tu diario y regresa conmigo cuando hayas terminado.
+  voiceLines:
+  - {fileID: 8300000, guid: 2ebad0ea661ee2f45978840ad44a2ac2, type: 3}
+  - {fileID: 8300000, guid: e937b09e7efa5d74693fece5af6af67f, type: 3}
+  - {fileID: 8300000, guid: b49831a8e4a748a4cbb23dac6fd13da1, type: 3}
+  - {fileID: 8300000, guid: 098adb4f37c733d41b94ff0247a6a287, type: 3}

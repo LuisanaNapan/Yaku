@@ -15,5 +15,14 @@ MonoBehaviour:
   speaker: Elena
   portrait: {fileID: 0}
   lines:
-  - "Me encargo de evaluar la herida de Tom\xE1s. Gracias por avisar y acompa\xF1arlo. Trae el paquete de apoyo que indica la ficha de la posta."
-  - "Para la otra familia, anota qu\xE9 ocurri\xF3, cu\xE1ndo y d\xF3nde. Una sospecha de exposici\xF3n se consulta con el personal de salud y sigue la orientaci\xF3n oficial."
+  - "Gracias por traer a Tom\xE1s. Evaluar\xE9 su herida y decidir\xE9 qu\xE9 atenci\xF3n necesita."
+  - "Busca el paquete b\xE1sico que se\xF1ala el tablero de la posta."
+  - "La otra familia necesita orientaci\xF3n sobre una posible exposici\xF3n a mercurio."
+  - "Registra qu\xE9 ocurri\xF3, d\xF3nde y cu\xE1ndo. No intentemos diagnosticar solo por los s\xEDntomas."
+  - En estos casos, debemos acudir a personal de salud y seguir sus indicaciones.
+  voiceLines:
+  - {fileID: 8300000, guid: c949e024979951e4abc91c6d850ff26e, type: 3}
+  - {fileID: 8300000, guid: 192f36ed618d73d459a30148f186332e, type: 3}
+  - {fileID: 8300000, guid: c6ee837dad89b634f9ea15c2b679345c, type: 3}
+  - {fileID: 8300000, guid: 0679fbbcccff0f34fbf8020c19161ed3, type: 3}
+  - {fileID: 8300000, guid: 754ebec70250a8c46aefe3c7cd575af8, type: 3}

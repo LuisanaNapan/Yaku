@@ -15,6 +15,8 @@ namespace Yaku.Dialogue
         private Text message;
         private Image portrait;
         private DialogueData active;
+        private AudioSource voiceSource;
+        private GameAudio gameAudio;
         private int line;
         private bool restoreMovement;
 
@@ -25,6 +27,13 @@ namespace Yaku.Dialogue
         {
             detector = GetComponent<InteractionDetector>();
             movement = GetComponent<PlayerMovement>();
+            gameAudio = GetComponent<GameAudio>();
+            voiceSource = gameObject.AddComponent<AudioSource>();
+            voiceSource.playOnAwake = false;
+            voiceSource.loop = false;
+            voiceSource.spatialBlend = 0f;
+            voiceSource.volume = 1f;
+
             message = GetComponent<CommunityHud>().CreatePanel("Dialogue", new Vector2(0.5f, 0f),
                 new Vector2(0, 132), new Vector2(840, 172), 23);
             message.supportRichText = true;
@@ -37,6 +46,14 @@ namespace Yaku.Dialogue
             portrait.preserveAspect = true;
             portrait.raycastTarget = false;
             message.transform.parent.gameObject.SetActive(false);
+        }
+
+        private void Update()
+        {
+            // La voz utiliza los mismos controles de volumen general y efectos ya existentes.
+            if (voiceSource != null && gameAudio != null)
+                voiceSource.volume = gameAudio.GetVolume(GameAudio.Channel.Master) *
+                                     gameAudio.GetVolume(GameAudio.Channel.Effects);
         }
 
         public bool Open(DialogueData data)
@@ -75,11 +92,25 @@ namespace Yaku.Dialogue
         {
             string action = line + 1 < active.LineCount ? "Continuar" : "Cerrar";
             message.text = $"<color=#E3C680><b>{active.Speaker}</b></color>\n{active.GetLine(line)}\n<size=19>[E] {action}</size>";
+
+            // Nunca reproducir dos frases simultaneamente al pulsar E.
+            if (voiceSource != null)
+            {
+                voiceSource.Stop();
+                voiceSource.clip = active.GetVoiceLine(line);
+                if (voiceSource.clip != null)
+                    voiceSource.Play();
+            }
         }
 
         private void Close()
         {
             if (!IsOpen) return;
+            if (voiceSource != null)
+            {
+                voiceSource.Stop();
+                voiceSource.clip = null;
+            }
             active = null;
             message.transform.parent.gameObject.SetActive(false);
             detector.SetModalInteraction(null);
