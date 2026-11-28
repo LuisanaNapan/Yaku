@@ -20,6 +20,7 @@ namespace Yaku.Quests
         [SerializeField, TextArea] private string retryFeedback;
         [SerializeField, TextArea] private string observation;
         [SerializeField] private ItemData reward;
+        [SerializeField] private CommunityDistribution distribution;
 
         public string Mission => mission;
         public string Instruction => instruction;
@@ -33,9 +34,11 @@ namespace Yaku.Quests
         public string RetryFeedback => retryFeedback;
         public string Observation => observation;
         public ItemData Reward => reward;
+        public CommunityDistribution Distribution => distribution;
 
         public void SetAvailable(bool available)
         {
+            if (distribution != null) distribution.SetAvailable(available);
             if (interactionTrigger != null) interactionTrigger.enabled = available;
             if (npc == null) return;
             if (available)

@@ -1187,6 +1187,7 @@ MonoBehaviour:
   retryFeedback: 
   observation: Una familia necesita agua de una fuente evaluada.
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &110262431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2087,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161024044}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &166704194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 166704195}
+  - component: {fileID: 166704196}
+  m_Layer: 0
+  m_Name: VerifiedWater Delivery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &166704195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166704194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &166704196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166704194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dd8a9d8211c79428fb0d7d27df82c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Inventory.SupplyDelivery
+  requiredItem: {fileID: 11400000, guid: 5df9956e822d1c145bf2087759322416, type: 2}
+  requiredQuantity: 2
+  recipient: "Tom\xE1s"
 --- !u!1 &168805187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,6 +2215,7 @@ MonoBehaviour:
   retryFeedback: 
   observation: El aviso ficticio verifica solo el punto de abastecimiento comunitario.
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &173167050
 GameObject:
   m_ObjectHideFlags: 0
@@ -4816,6 +4865,133 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339754564}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &343102992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343102993}
+  - component: {fileID: 343102997}
+  - component: {fileID: 343102996}
+  - component: {fileID: 343102995}
+  - component: {fileID: 343102994}
+  m_Layer: 0
+  m_Name: VerifiedWater Pickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &343102993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343102992}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.85, y: 0.41, z: 2.35}
+  m_LocalScale: {x: 0.53, y: 0.7, z: 0.48}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &343102994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343102992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b81dfe56fa7ce4092638726fb68c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Inventory.SupplyPickup
+  item: {fileID: 11400000, guid: 5df9956e822d1c145bf2087759322416, type: 2}
+  quantity: 2
+--- !u!23 &343102995
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343102992}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 515d31c299ab3b44d83233d6457b2ff5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &343102996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343102992}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &343102997
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343102992}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &363829963
 GameObject:
   m_ObjectHideFlags: 0
@@ -7117,6 +7293,53 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0000002, z: 1.0000001}
   m_Center: {x: -0.00000011920929, y: 0, z: 0.00000011920929}
+--- !u!1 &523623839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 523623840}
+  - component: {fileID: 523623841}
+  m_Layer: 0
+  m_Name: ClinicSupport Delivery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &523623840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523623839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &523623841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523623839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dd8a9d8211c79428fb0d7d27df82c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Inventory.SupplyDelivery
+  requiredItem: {fileID: 11400000, guid: c0f5dcc44e0191441bd28a4aa256aa4a, type: 2}
+  requiredQuantity: 1
+  recipient: Elena
 --- !u!1 &534040408
 GameObject:
   m_ObjectHideFlags: 0
@@ -8400,6 +8623,7 @@ MonoBehaviour:
   retryFeedback: 
   observation: "La familia recibi\xF3 agua de la fuente evaluada en la simulaci\xF3n."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &643739736
 GameObject:
   m_ObjectHideFlags: 0
@@ -8693,6 +8917,7 @@ MonoBehaviour:
   retryFeedback: "Cada situaci\xF3n se atiende de forma distinta. Comunica lo observado al personal de salud."
   observation: "La familia recibi\xF3 orientaci\xF3n para buscar evaluaci\xF3n profesional ante la sospecha de exposici\xF3n."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &671363051
 GameObject:
   m_ObjectHideFlags: 0
@@ -10943,6 +11168,133 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6392508819725865502, guid: 11a33fe0b10f99a41be6529ebcc8d18b, type: 3}
   m_PrefabInstance: {fileID: 822747265}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &827689613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 827689614}
+  - component: {fileID: 827689618}
+  - component: {fileID: 827689617}
+  - component: {fileID: 827689616}
+  - component: {fileID: 827689615}
+  m_Layer: 0
+  m_Name: ClinicSupport Pickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &827689614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827689613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4, y: 0.41, z: 2.4}
+  m_LocalScale: {x: 0.53, y: 0.7, z: 0.48}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &827689615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827689613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b81dfe56fa7ce4092638726fb68c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Inventory.SupplyPickup
+  item: {fileID: 11400000, guid: c0f5dcc44e0191441bd28a4aa256aa4a, type: 2}
+  quantity: 1
+--- !u!23 &827689616
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827689613}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b2c50f33e614455449866e53d4a682ae, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &827689617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827689613}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &827689618
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827689613}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &836394700
 GameObject:
   m_ObjectHideFlags: 0
@@ -11808,6 +12160,46 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894612137}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &906411529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 906411530}
+  m_Layer: 0
+  m_Name: Chapter - Distribution
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &906411530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906411529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1269365563}
+  - {fileID: 1066468654}
+  - {fileID: 1038869992}
+  - {fileID: 343102993}
+  - {fileID: 166704195}
+  - {fileID: 940003321}
+  - {fileID: 997349482}
+  - {fileID: 827689614}
+  - {fileID: 523623840}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &910010247
 GameObject:
   m_ObjectHideFlags: 0
@@ -12457,6 +12849,133 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936114554}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &940003320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940003321}
+  - component: {fileID: 940003325}
+  - component: {fileID: 940003324}
+  - component: {fileID: 940003323}
+  - component: {fileID: 940003322}
+  m_Layer: 0
+  m_Name: DocumentedFood Pickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &940003321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940003320}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.95, y: 0.41, z: 2.9}
+  m_LocalScale: {x: 0.53, y: 0.7, z: 0.48}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &940003322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940003320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b81dfe56fa7ce4092638726fb68c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Inventory.SupplyPickup
+  item: {fileID: 11400000, guid: 3f59beace01eff348b7a193abd1af5da, type: 2}
+  quantity: 1
+--- !u!23 &940003323
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940003320}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: d29e34f2894be814dab8780f2b24f7ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &940003324
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940003320}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &940003325
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940003320}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &940619636
 GameObject:
   m_ObjectHideFlags: 0
@@ -12954,6 +13473,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990092091}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &997349481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997349482}
+  - component: {fileID: 997349483}
+  m_Layer: 0
+  m_Name: DocumentedFood Delivery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &997349482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997349481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &997349483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997349481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dd8a9d8211c79428fb0d7d27df82c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Inventory.SupplyDelivery
+  requiredItem: {fileID: 11400000, guid: 3f59beace01eff348b7a193abd1af5da, type: 2}
+  requiredQuantity: 1
+  recipient: Rosa
 --- !u!1 &1002377026
 GameObject:
   m_ObjectHideFlags: 0
@@ -13601,6 +14167,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037019954}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1038869991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038869992}
+  - component: {fileID: 1038869993}
+  m_Layer: 0
+  m_Name: Distribution Confirmation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1038869992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038869991}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038869993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038869991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d07892c85c81584383e43290ae02fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterObjective
+  mission: Una comunidad preparada
+  instruction: Confirma con Elena el motivo de tus entregas.
+  prompt: Confirmar las entregas con Elena
+  conversation: {fileID: 0}
+  npc: {fileID: 179525889}
+  interactionTrigger: {fileID: 0}
+  question: "\xBFPor qu\xE9 entregaste esos bidones a Tom\xE1s?"
+  choices:
+  - "La fuente fue verificada seg\xFAn el aviso ficticio."
+  - Cualquier agua que parezca clara sirve.
+  - "Los bidones eran los m\xE1s cercanos."
+  correctChoice: 0
+  correctFeedback: "Elena confirma las tres entregas. Comparar informaci\xF3n ayuda a que los recursos adecuados lleguen a cada familia."
+  retryFeedback: Piensa en la evidencia que consultaste en el sendero de la ribera.
+  observation: "Elena confirm\xF3 las tres entregas y la justificaci\xF3n sobre la fuente de agua."
+  reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &1039043408
 GameObject:
   m_ObjectHideFlags: 0
@@ -13759,6 +14386,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1453392276}
+    - targetCorrespondingSourceObject: {fileID: 5102238986775870347, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1453392285}
   m_SourcePrefab: {fileID: 100100000, guid: 131addd5329979344938a5ae89e5d76b, type: 3}
 --- !u!4 &1039057300 stripped
 Transform:
@@ -14076,6 +14706,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065518546}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1066468653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066468654}
+  - component: {fileID: 1066468655}
+  m_Layer: 0
+  m_Name: Distribution Route
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066468654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066468653}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1066468655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066468653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d07892c85c81584383e43290ae02fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterObjective
+  mission: Una comunidad preparada
+  instruction: "Recoge los paquetes del almac\xE9n y rep\xE1rtelos."
+  prompt: Entregas comunitarias
+  conversation: {fileID: 0}
+  npc: {fileID: 0}
+  interactionTrigger: {fileID: 0}
+  question: 
+  choices: []
+  correctChoice: 0
+  correctFeedback: 
+  retryFeedback: 
+  observation: "El agua verificada, el alimento documentado y el paquete b\xE1sico se entregaron a sus destinatarios."
+  reward: {fileID: 0}
+  distribution: {fileID: 1453392285}
 --- !u!1 &1068165592
 GameObject:
   m_ObjectHideFlags: 0
@@ -14438,6 +15126,7 @@ MonoBehaviour:
   retryFeedback: 
   observation: "Rosa explica c\xF3mo el mercurio se acumula en la cadena alimentaria."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &1090589715
 GameObject:
   m_ObjectHideFlags: 0
@@ -15462,6 +16151,7 @@ MonoBehaviour:
   retryFeedback: "La cocci\xF3n y el aspecto no establecen el contenido de mercurio. Consulta la procedencia y los avisos sanitarios."
   observation: "Decisi\xF3n informada: se comprob\xF3 procedencia y orientaci\xF3n sanitaria."
   reward: {fileID: 11400000, guid: 8a57d0112d7299f469be702822d9d870, type: 2}
+  distribution: {fileID: 0}
 --- !u!1 &1201087572
 GameObject:
   m_ObjectHideFlags: 0
@@ -15846,6 +16536,7 @@ MonoBehaviour:
   retryFeedback: "Volvamos a la ficha. La frescura aparente no descarta mercurio y una restricci\xF3n vigente merece atenci\xF3n."
   observation: "Se eligi\xF3 el lote documentado de acuerdo con el aviso ficticio."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &1221404255
 GameObject:
   m_ObjectHideFlags: 0
@@ -16523,6 +17214,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258638832}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1269365561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269365563}
+  - component: {fileID: 1269365562}
+  m_Layer: 0
+  m_Name: Distribution Plan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1269365562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269365561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d07892c85c81584383e43290ae02fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.ChapterObjective
+  mission: Una comunidad preparada
+  instruction: Coordina las entregas con Elena.
+  prompt: Coordinar entregas
+  conversation: {fileID: 11400000, guid: e53db7dda8bb9b34eb7bb5bc35734113, type: 2}
+  npc: {fileID: 179525889}
+  interactionTrigger: {fileID: 0}
+  question: 
+  choices: []
+  correctChoice: 0
+  correctFeedback: 
+  retryFeedback: 
+  observation: "Se acordaron tres entregas: agua a Tom\xE1s, alimento a Rosa y apoyo b\xE1sico a Elena."
+  reward: {fileID: 0}
+  distribution: {fileID: 0}
+--- !u!4 &1269365563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269365561}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 906411530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1278971712
 GameObject:
   m_ObjectHideFlags: 0
@@ -19193,6 +19942,34 @@ MonoBehaviour:
   - {fileID: 1577505187}
   - {fileID: 1728923312}
   - {fileID: 661887913}
+  - {fileID: 1269365562}
+  - {fileID: 1066468655}
+  - {fileID: 1038869993}
+--- !u!114 &1453392285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453392266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38c3c7f1120160459f698d60685b6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Yaku.Quests.CommunityDistribution
+  stops:
+  - label: "Tom\xE1s"
+    recipient: {fileID: 250903809}
+    pickup: {fileID: 343102994}
+    delivery: {fileID: 166704196}
+  - label: Rosa
+    recipient: {fileID: 1701008831}
+    pickup: {fileID: 940003322}
+    delivery: {fileID: 997349483}
+  - label: Elena
+    recipient: {fileID: 179525889}
+    pickup: {fileID: 827689615}
+    delivery: {fileID: 523623841}
 --- !u!1 &1465557951
 GameObject:
   m_ObjectHideFlags: 0
@@ -19900,6 +20677,7 @@ MonoBehaviour:
   retryFeedback: "Revisa el aviso de monitoreo. El aspecto y los tratamientos dom\xE9sticos no demuestran seguridad qu\xEDmica."
   observation: "Fuente seleccionada: abastecimiento verificado seg\xFAn el aviso ficticio."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &1538855895
 GameObject:
   m_ObjectHideFlags: 0
@@ -20371,6 +21149,7 @@ MonoBehaviour:
   retryFeedback: 
   observation: "La posta registra por separado el incidente y la solicitud de orientaci\xF3n profesional."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &1579777320
 GameObject:
   m_ObjectHideFlags: 0
@@ -21822,6 +22601,7 @@ MonoBehaviour:
   retryFeedback: 
   observation: "Tom\xE1s solicita acompa\xF1amiento por una herida y una familia solicita orientaci\xF3n sobre exposici\xF3n."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &1717612460
 GameObject:
   m_ObjectHideFlags: 0
@@ -22219,6 +22999,7 @@ MonoBehaviour:
   retryFeedback: Revisa la solicitud de la posta. Los recursos cumplen funciones diferentes.
   observation: "Se seleccion\xF3 el paquete b\xE1sico solicitado por la posta para el incidente."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1001 &1743641689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24462,6 +25243,7 @@ MonoBehaviour:
   retryFeedback: 
   observation: "La ficha compara tres procedencias y se\xF1ala el lote autorizado en esta simulaci\xF3n."
   reward: {fileID: 0}
+  distribution: {fileID: 0}
 --- !u!1 &1919606134
 GameObject:
   m_ObjectHideFlags: 0
@@ -27290,3 +28072,4 @@ SceneRoots:
   - {fileID: 671363052}
   - {fileID: 1068165593}
   - {fileID: 2105051461}
+  - {fileID: 906411530}

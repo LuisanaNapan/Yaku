@@ -77,6 +77,17 @@ namespace Yaku.Quests
                 Complete(step);
         }
 
+        public void UpdateDistribution(CommunityDistribution distribution)
+        {
+            var step = Active;
+            if (step == null || step.Distribution != distribution) return;
+
+            if (distribution.IsComplete)
+                Complete(step);
+            else
+                Render();
+        }
+
         private void Complete(ChapterObjective step)
         {
             if (step != Active) return;
@@ -103,6 +114,8 @@ namespace Yaku.Quests
             objectiveText.text = step == null
                 ? $"<b>{objectives[objectives.Length - 1].Mission}</b>\nCompletada"
                 : $"<b>{step.Mission}</b>\n{step.Instruction}";
+            if (step != null && step.Distribution != null)
+                objectiveText.text += $"\n<size=15>{step.Distribution.Status}</size>";
         }
     }
 }
