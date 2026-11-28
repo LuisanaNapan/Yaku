@@ -32,6 +32,11 @@ namespace Yaku.Quests
 
         public Stage CurrentStage { get; private set; }
 
+        public void SetChapterObjectiveVisible(bool visible)
+        {
+            if (objective != null) objective.transform.parent.gameObject.SetActive(!visible);
+        }
+
         private void Awake()
         {
             dialogue = GetComponent<DialogueController>();

@@ -40,7 +40,7 @@ Los avances 6–10 se implementaron y registraron el **27 de noviembre de 2026**
 
 | Avance | Funcionalidad | Hash | Fecha real de implementación | Pruebas realizadas o pendientes |
 | --- | --- | --- | --- | --- |
-| 11 | Misión de agua «El peligro invisible», con aviso de monitoreo, decisión y entrega. | Pendiente | Pendiente | Pendiente. Elegir primero una fuente sin verificar, recibir la explicación y completar la misión tras corregir la decisión. |
+| 11 | Misión del agua «El peligro invisible». Aviso, elección, registro de observaciones y entrega a Elena. | Ver historial de la rama | 27 de noviembre de 2026 | 17 comprobaciones en Play Mode mediante Unity MCP. Tutorial previo, bloqueo de orden, lectura, elección errónea y reintento, entrega y recuperación del movimiento. Consola sin errores ni advertencias. |
 | 12 | Misión de alimentos «Elegir con información», con ficha, tres opciones y justificación. | Pendiente | Pendiente | Pendiente. Comparar una elección sin respaldo con una informada y verificar que la recompensa se concede una sola vez. |
 | 13 | Secuencia guiada de orientación sanitaria con Tomás y Elena. | Pendiente | Pendiente | Pendiente. Recorrer el incidente cotidiano y la sospecha de exposición, y verificar el diálogo y el objetivo correspondiente. |
 | 14 | Distribución comunitaria de tres paquetes y confirmación final de Elena. | Pendiente | Pendiente | Pendiente. Probar entregas incompletas, incorrectas y repetidas. Confirmar el cierre tras las tres entregas válidas. |
