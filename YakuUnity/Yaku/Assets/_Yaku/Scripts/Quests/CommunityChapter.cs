@@ -27,6 +27,7 @@ namespace Yaku.Quests
         public bool IsComplete => current == objectives.Length;
         public ChapterObjective Active => current >= 0 && current < objectives.Length ? objectives[current] : null;
         public string LastObservation { get; private set; }
+        public event Action<ChapterObjective> ObjectiveCompleted;
         public event Action Completed;
 
         private void Awake()
@@ -114,6 +115,7 @@ namespace Yaku.Quests
             if (Active == null || Active.Mission != step.Mission)
                 hud.Notify($"Misión completada · {step.Mission}", GameAudio.Cue.Complete);
             Render();
+            ObjectiveCompleted?.Invoke(step);
             if (IsComplete) Completed?.Invoke();
         }
 

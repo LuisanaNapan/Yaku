@@ -32,6 +32,12 @@ namespace Yaku.Quests
 
         public Stage CurrentStage { get; private set; }
         public bool UseChapterJournal { get; set; }
+        public Transform Destination => CurrentStage switch
+        {
+            Stage.Collection => supplies.transform,
+            Stage.Delivery => recipient.transform,
+            _ => null
+        };
 
         public void SetChapterObjectiveVisible(bool visible)
         {
@@ -99,7 +105,7 @@ namespace Yaku.Quests
             if (actor != gameObject || CurrentStage != Stage.Delivery)
                 return;
             TransitionTo(Stage.Complete);
-            hud.Notify("Misión completada. Diario y embarcadero habilitados.", GameAudio.Cue.Complete);
+            hud.Notify("Primer encargo completado. Vuelve a la posta para hablar del río.", GameAudio.Cue.Complete);
         }
 
         private void TransitionTo(Stage next)

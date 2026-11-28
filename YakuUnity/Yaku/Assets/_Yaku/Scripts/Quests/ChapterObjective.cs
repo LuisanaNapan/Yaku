@@ -35,6 +35,8 @@ namespace Yaku.Quests
         public string Observation => observation;
         public ItemData Reward => reward;
         public CommunityDistribution Distribution => distribution;
+        public Transform Destination => distribution != null ? distribution.Destination :
+            npc != null ? npc.transform : interactionTrigger != null ? interactionTrigger.transform : null;
 
         public void SetAvailable(bool available)
         {

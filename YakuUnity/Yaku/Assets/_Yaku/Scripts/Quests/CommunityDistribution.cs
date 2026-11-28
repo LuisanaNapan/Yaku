@@ -19,6 +19,7 @@ namespace Yaku.Quests
 
             public SupplyPickup Pickup => pickup;
             public SupplyDelivery Delivery => delivery;
+            public Transform Recipient => recipient.transform;
             public string Status => $"{label}: {(delivery.Delivered ? "entregado" : "pendiente")}";
 
             public void SetAvailable(bool available)
@@ -38,6 +39,19 @@ namespace Yaku.Quests
         public int DeliveredCount => stops.Count(stop => stop.Delivery.Delivered);
         public int TotalCount => stops.Length;
         public bool IsComplete => DeliveredCount == TotalCount;
+        public Transform Destination
+        {
+            get
+            {
+                foreach (var stop in stops)
+                    if (!stop.Delivery.Delivered && stop.Pickup.gameObject.activeSelf)
+                        return stop.Pickup.transform;
+                foreach (var stop in stops)
+                    if (!stop.Delivery.Delivered)
+                        return stop.Recipient;
+                return null;
+            }
+        }
         public string Status => $"{DeliveredCount}/{TotalCount} · " + string.Join(" · ", stops.Select(stop => stop.Status));
 
         private void OnEnable()
