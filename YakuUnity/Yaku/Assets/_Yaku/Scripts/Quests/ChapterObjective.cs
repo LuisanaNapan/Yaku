@@ -1,6 +1,7 @@
 using UnityEngine;
 using Yaku.Dialogue;
 using Yaku.Interaction;
+using Yaku.Inventory;
 
 namespace Yaku.Quests
 {
@@ -18,6 +19,7 @@ namespace Yaku.Quests
         [SerializeField, TextArea] private string correctFeedback;
         [SerializeField, TextArea] private string retryFeedback;
         [SerializeField, TextArea] private string observation;
+        [SerializeField] private ItemData reward;
 
         public string Mission => mission;
         public string Instruction => instruction;
@@ -30,6 +32,7 @@ namespace Yaku.Quests
         public string CorrectFeedback => correctFeedback;
         public string RetryFeedback => retryFeedback;
         public string Observation => observation;
+        public ItemData Reward => reward;
 
         public void SetAvailable(bool available)
         {

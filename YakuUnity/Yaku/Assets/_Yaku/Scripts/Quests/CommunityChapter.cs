@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Yaku.Dialogue;
+using Yaku.Inventory;
 using Yaku.UI;
 
 namespace Yaku.Quests
@@ -79,6 +80,11 @@ namespace Yaku.Quests
         private void Complete(ChapterObjective step)
         {
             if (step != Active) return;
+            if (step.Reward != null && !GetComponent<PlayerInventory>().TryAdd(step.Reward, 1))
+            {
+                hud.Notify("Libera un espacio en la mochila y vuelve a confirmar tu decisión.");
+                return;
+            }
 
             step.SetAvailable(false);
             if (!string.IsNullOrEmpty(step.Observation))
