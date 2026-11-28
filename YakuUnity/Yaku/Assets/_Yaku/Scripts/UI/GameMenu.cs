@@ -15,6 +15,11 @@ namespace Yaku.UI
         private static readonly Color Ink = new Color(0.043f, 0.13f, 0.105f, 0.98f);
         private static readonly Color Sand = new Color(0.98f, 0.93f, 0.78f);
         private static readonly Color Green = new Color(0.19f, 0.37f, 0.27f);
+
+        [Header("Música de Ambiente")] // <-- AUDIO
+        [SerializeField] private AudioClip menuAmbientClip; // Arrastra aquí "audioambiente" // <-- AUDIO
+        [SerializeField] private AudioClip gameplayClip;    // Arrastra aquí "amazon-florest" // <-- AUDIO
+
         private ScreenState state;
         private ScreenState previous;
         private CommunityHud hud;
@@ -26,6 +31,7 @@ namespace Yaku.UI
         private readonly UnityEngine.Events.UnityAction[] options = new UnityEngine.Events.UnityAction[4];
         private InputAction back;
         private GameAudio audioController;
+        private AudioSource musicSource; // <-- AUDIO
         private GameObject volumeControls;
         private bool cursorWasLocked;
         private bool loading;
@@ -36,6 +42,7 @@ namespace Yaku.UI
         {
             hud = GetComponent<CommunityHud>();
             audioController = GetComponent<GameAudio>();
+            SetupMusicSource(); // <-- AUDIO
             CreateMenu();
             Show(ScreenState.Title);
         }
@@ -43,6 +50,33 @@ namespace Yaku.UI
         private void Awake() => back = new InputAction("Pause", binding: "<Keyboard>/escape");
         private void OnEnable() => back.Enable();
         private void OnDisable() => back.Disable();
+
+        private void SetupMusicSource() // <-- AUDIO
+        {
+            musicSource = gameObject.AddComponent<AudioSource>();
+            musicSource.loop = true;
+            musicSource.playOnAwake = false;
+            musicSource.spatialBlend = 0f;
+            SyncMusicVolume();
+        }
+
+        private void SyncMusicVolume() // <-- AUDIO
+        {
+            if (musicSource == null) return;
+            if (audioController != null)
+                musicSource.volume = audioController.GetVolume(GameAudio.Channel.Master) * audioController.GetVolume(GameAudio.Channel.Music);
+            else
+                musicSource.volume = 0.6f;
+        }
+
+        private void PlayMusic(AudioClip clip) // <-- AUDIO
+        {
+            if (musicSource == null || clip == null) return;
+            SyncMusicVolume();
+            if (musicSource.clip == clip && musicSource.isPlaying) return;
+            musicSource.clip = clip;
+            musicSource.Play();
+        }
 
         private void Update()
         {
@@ -135,6 +169,10 @@ namespace Yaku.UI
             hud.SetVisible(playing);
             Cursor.lockState = playing && cursorWasLocked ? CursorLockMode.Locked : CursorLockMode.None;
             Cursor.visible = Cursor.lockState != CursorLockMode.Locked;
+
+            // Si está jugando suena amazon-florest; si aparece cualquier menú/HUD suena audioambiente
+            PlayMusic(playing ? gameplayClip : menuAmbientClip); // <-- AUDIO
+
             if (playing) return;
 
             bool showVolume = state == ScreenState.Settings && volumeControls != null;
@@ -221,6 +259,7 @@ namespace Yaku.UI
                 slider.onValueChanged.AddListener(value =>
                 {
                     audioController.SetVolume(channel, value);
+                    SyncMusicVolume(); // <-- AUDIO
                     percent.text = $"{Mathf.RoundToInt(value * 100f)}%";
                 });
             }
