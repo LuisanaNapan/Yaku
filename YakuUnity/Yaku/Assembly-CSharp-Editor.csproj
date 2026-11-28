@@ -53,6 +53,8 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.6.9f1\Editor\Data\BCLExtensions\TargetingPacks\netstandard2.1\analyzers\dotnet\roslyn4.0\cs\System.Text.Json.SourceGeneration.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Yaku\Editor\YakuWindowsBuild.cs" />
+    <Compile Include="Assets\_Yaku\Editor\YakuProjectValidation.cs" />
     <Compile Include="Assets\Viking Village\Shaders\Editor\TerrainSurfaceGUI.cs" />
     <Compile Include="Assets\Viking Village\Boat Attack Water System\Editor\WaterSurfaceDataEditor.cs" />
     <Compile Include="Assets\Viking Village\Boat Attack Water System\Editor\WaterSettingsDataEditor.cs" />
