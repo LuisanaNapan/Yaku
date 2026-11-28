@@ -19,6 +19,7 @@ namespace Yaku.Dialogue
         private GameAudio gameAudio;
         private int line;
         private bool restoreMovement;
+        private bool voicePaused;
 
         public bool IsOpen => active != null;
         public event Action<DialogueData> Finished;
@@ -50,6 +51,15 @@ namespace Yaku.Dialogue
 
         private void Update()
         {
+            if (voiceSource != null && IsOpen)
+            {
+                bool paused = Time.timeScale <= 0f;
+                if (paused && !voicePaused)
+                    voiceSource.Pause();
+                else if (!paused && voicePaused)
+                    voiceSource.UnPause();
+                voicePaused = paused;
+            }
             // La voz utiliza los mismos controles de volumen general y efectos ya existentes.
             if (voiceSource != null && gameAudio != null)
                 voiceSource.volume = gameAudio.GetVolume(GameAudio.Channel.Master) *
@@ -97,6 +107,7 @@ namespace Yaku.Dialogue
             if (voiceSource != null)
             {
                 voiceSource.Stop();
+                voicePaused = false;
                 voiceSource.clip = active.GetVoiceLine(line);
                 if (voiceSource.clip != null)
                     voiceSource.Play();
@@ -109,6 +120,7 @@ namespace Yaku.Dialogue
             if (voiceSource != null)
             {
                 voiceSource.Stop();
+                voicePaused = false;
                 voiceSource.clip = null;
             }
             active = null;
