@@ -78,11 +78,11 @@ namespace Yaku.UI
             yield return Speak(1.10f, 5.40f);
             Require(chapter.CompletedCount == 4, "misión del agua");
 
-            yield return Speak(2.65f, 9.70f);
-            yield return Speak(0.90f, 9.65f);
-            yield return At(0.90f, 9.65f);
+            yield return Speak(4.28f, 10.05f);
+            yield return Speak(5.44f, 9.74f);
+            yield return At(5.44f, 9.74f);
             yield return Answer(Key.Digit2);
-            yield return At(2.65f, 9.70f);
+            yield return At(4.28f, 10.05f);
             yield return Answer(Key.Digit2);
             Require(chapter.CompletedCount == 8, "misión de alimentación");
 
@@ -99,7 +99,7 @@ namespace Yaku.UI
             yield return At(-4.95f, 2.90f);
             yield return At(-4.00f, 2.40f);
             yield return At(-2.51f, -3.97f);
-            yield return At(2.65f, 9.70f);
+            yield return At(4.28f, 10.05f);
             yield return At(1.10f, 5.40f);
             Require(chapter.CompletedCount == 14, "tres recogidas y entregas");
             yield return At(1.10f, 5.40f);
