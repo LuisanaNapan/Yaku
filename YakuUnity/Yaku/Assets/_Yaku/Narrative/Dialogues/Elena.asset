@@ -15,5 +15,10 @@ MonoBehaviour:
   speaker: Elena
   portrait: {fileID: 0}
   lines:
-  - "Yaku, \xBFnos ayudas con una entrega? La comunidad tiene suministros para las familias."
-  - "Recoge el paquete del almac\xE9n y entr\xE9gaselo a Tom\xE1s. Al terminar podr\xE1s visitar el embarcadero."
+  - Yaku, gracias por venir. Hay familias esperando ayuda y cada suministro cuenta.
+  - "Empieza con el paquete del almac\xE9n. Tom\xE1s lo recibir\xE1 junto al sendero."
+  - "Cuando termines, vuelve a la posta. Tenemos m\xE1s asuntos que atender."
+  voiceLines:
+  - {fileID: 8300000, guid: a3f1e0aa47e60f5458e716d29f967078, type: 3}
+  - {fileID: 8300000, guid: 6bfe8d23df0993b43946690390cb52d2, type: 3}
+  - {fileID: 8300000, guid: 141b50e018a76a64e945552f2533cb7e, type: 3}

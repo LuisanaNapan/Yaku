@@ -15,5 +15,10 @@ MonoBehaviour:
   speaker: "Tom\xE1s"
   portrait: {fileID: 0}
   lines:
-  - Hola, Yaku. Vivo junto al sendero y puedo ayudar a repartir suministros.
-  - "Si necesitas orientaci\xF3n sobre el agua, pregunta a Elena en la posta."
+  - Hola, Yaku. A veces me preocupa que los suministros no alcancen para todos.
+  - "Pero si coordinamos bien las entregas, podremos cuidar tambi\xE9n de otras familias."
+  - Si tienes dudas sobre el agua, habla con Elena en la posta.
+  voiceLines:
+  - {fileID: 8300000, guid: 886654490234a4644bae347c7b36142b, type: 3}
+  - {fileID: 8300000, guid: 947691615bb191e41acf2ffb0a24d621, type: 3}
+  - {fileID: 8300000, guid: bb8a75d830eea8141b7859cf3a2af866, type: 3}

@@ -15,5 +15,10 @@ MonoBehaviour:
   speaker: Rosa
   portrait: {fileID: 0}
   lines:
-  - "Buenos d\xEDas, Yaku. Consultamos la procedencia de los alimentos antes de consumirlos."
-  - "La ficha de la comunidad nos ayuda a decidir qu\xE9 suministros usar."
+  - "Buenos d\xEDas, Yaku. Antes de elegir un alimento, averiguamos de d\xF3nde viene."
+  - Hay cosas que ni el olor ni la apariencia pueden revelarnos.
+  - "La ficha comunitaria nos ayudar\xE1 a tomar una decisi\xF3n informada."
+  voiceLines:
+  - {fileID: 8300000, guid: 02fac9507ead69e4fb10e1866c7b2aef, type: 3}
+  - {fileID: 8300000, guid: c5f146aaa27c82442a5b703d66f8ba7c, type: 3}
+  - {fileID: 8300000, guid: dcd5b7873c005044fb451122e170dacf, type: 3}
