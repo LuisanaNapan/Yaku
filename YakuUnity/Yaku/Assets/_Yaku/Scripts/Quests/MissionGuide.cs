@@ -17,6 +17,9 @@ namespace Yaku.Quests
         private Text marker;
         private RectTransform markerRect;
         private RectTransform canvasRect;
+        private Transform focus;
+
+        public void FocusOn(Transform point) => focus = point;
 
         private void Start()
         {
@@ -39,6 +42,7 @@ namespace Yaku.Quests
                 ? posta : tutorial.Destination;
             if (tutorial.CurrentStage == TutorialQuest.Stage.Complete)
                 destination = chapter.Active?.Destination;
+            if (focus != null) destination = focus;
 
             bool visible = destination != null && view != null && Time.timeScale > 0f &&
                 !detector.HasModalInteraction &&
@@ -46,7 +50,8 @@ namespace Yaku.Quests
             markerRect.gameObject.SetActive(visible);
             if (!visible) return;
 
-            Vector3 screen = view.WorldToViewportPoint(destination.position + Vector3.up * 1.85f);
+            float markerHeight = focus == null ? 1.85f : 4.5f;
+            Vector3 screen = view.WorldToViewportPoint(destination.position + Vector3.up * markerHeight);
             Vector2 direction = new Vector2(screen.x - 0.5f, screen.y - 0.5f);
             if (screen.z <= 0f)
             {
@@ -60,7 +65,9 @@ namespace Yaku.Quests
             markerRect.anchoredPosition = new Vector2(x, y);
             string symbol = screen.z <= 0f || Mathf.Abs(direction.x) >= 0.5f
                 ? (direction.x < 0f ? "‹" : "›") : "◆";
-            marker.text = $"{symbol} {Mathf.RoundToInt(Vector3.Distance(transform.position, destination.position))} m";
+            marker.text = focus == null
+                ? $"{symbol} {Mathf.RoundToInt(Vector3.Distance(transform.position, destination.position))} m"
+                : $"{symbol} Mina";
         }
     }
 }
