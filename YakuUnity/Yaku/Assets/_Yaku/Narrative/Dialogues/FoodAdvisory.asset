@@ -15,5 +15,14 @@ MonoBehaviour:
   speaker: "Ficha de consumo \xB7 Simulaci\xF3n"
   portrait: {fileID: 0}
   lines:
-  - "Lugar A: origen sin identificar. Lugar B: lote documentado y recomendado en el aviso ficticio. Lugar C: aviso vigente de restricci\xF3n."
-  - "En la vida real consulta recomendaciones actualizadas de las autoridades sanitarias. El olor, la apariencia y la cocci\xF3n no indican si un pescado contiene mercurio."
+  - "LOTE A: su procedencia no est\xE1 documentada, aunque parece fresco."
+  - "LOTE B: procedencia documentada y recomendaci\xF3n en el aviso ficticio de esta misi\xF3n."
+  - "LOTE C: origen conocido, pero sujeto a una restricci\xF3n en este escenario."
+  - "La cocci\xF3n, el olor y el aspecto no permiten descartar mercurio en el pescado."
+  - En la vida real, revisa las recomendaciones actualizadas de las autoridades sanitarias.
+  voiceLines:
+  - {fileID: 8300000, guid: 9cb2aa8f8601c6e49838d71e0efd3224, type: 3}
+  - {fileID: 8300000, guid: 471317eae55520c44b58f0b6df541d9b, type: 3}
+  - {fileID: 8300000, guid: 983e2a05f6abec74d868c173279a7816, type: 3}
+  - {fileID: 8300000, guid: 471ac641f3217f84d9791e902dbd2165, type: 3}
+  - {fileID: 8300000, guid: 4f25d9321fa75974f806481a33d434cb, type: 3}

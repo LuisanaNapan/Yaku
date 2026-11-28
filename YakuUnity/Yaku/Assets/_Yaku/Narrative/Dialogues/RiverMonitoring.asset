@@ -15,5 +15,12 @@ MonoBehaviour:
   speaker: "Aviso de monitoreo \xB7 Simulaci\xF3n"
   portrait: {fileID: 0}
   lines:
-  - "El punto de abastecimiento comunitario est\xE1 verificado en esta misi\xF3n. El recipiente del r\xEDo no tiene resultados vigentes."
-  - "La turbidez se puede observar, pero ninguna inspecci\xF3n visual identifica mercurio disuelto. Sigue las indicaciones de las autoridades sanitarias y ambientales."
+  - "AVISO FICTICIO: solo el punto de abastecimiento comunitario est\xE1 verificado aqu\xED."
+  - "Para el recipiente del r\xEDo no hay resultados vigentes que confirmen su seguridad."
+  - El color y la transparencia del agua no permiten identificar mercurio disuelto.
+  - Hervir o filtrar sedimentos no elimina de forma fiable el mercurio. Consulta avisos oficiales.
+  voiceLines:
+  - {fileID: 8300000, guid: a731dc62c94fbb442943f9669a9370df, type: 3}
+  - {fileID: 8300000, guid: 399155a377675f3479a068776d0c39d3, type: 3}
+  - {fileID: 8300000, guid: a2604d2015f4b67468b69eb2e0d68c2b, type: 3}
+  - {fileID: 8300000, guid: 77aa5a0bbc25be54fa1c57087e8dc24e, type: 3}

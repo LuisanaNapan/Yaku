@@ -15,5 +15,12 @@ MonoBehaviour:
   speaker: Elena
   portrait: {fileID: 0}
   lines:
-  - Gracias por traer agua de la fuente evaluada para la familia. Registremos el aviso y el origen del recipiente.
-  - "Evitemos fuentes sospechosas y pidamos orientaci\xF3n a las autoridades de salud y ambiente. En una situaci\xF3n real deben consultarse avisos vigentes."
+  - Elegiste la fuente evaluada, Yaku. Eso ayuda a proteger a una familia hoy.
+  - Anotemos el origen del recipiente y el aviso que consultaste.
+  - "No hemos solucionado la contaminaci\xF3n; hemos evitado decidir sin informaci\xF3n."
+  - "Ante una situaci\xF3n real, debemos seguir los avisos de salud y ambiente vigentes."
+  voiceLines:
+  - {fileID: 8300000, guid: 5d66b15633da8cf44b93f6c0435bc8ff, type: 3}
+  - {fileID: 8300000, guid: c5389b508136e3142940a747ea82634d, type: 3}
+  - {fileID: 8300000, guid: a4b1597fb0977aa4cb5b4125d53bfebc, type: 3}
+  - {fileID: 8300000, guid: f3a62f9202084b848b12902d7902d358, type: 3}

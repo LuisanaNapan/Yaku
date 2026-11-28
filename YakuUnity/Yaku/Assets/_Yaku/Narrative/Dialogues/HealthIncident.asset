@@ -15,5 +15,12 @@ MonoBehaviour:
   speaker: "Tom\xE1s"
   portrait: {fileID: 0}
   lines:
-  - "Me hice un corte al ordenar cajas. \xBFPuedes acompa\xF1arme con Elena?"
-  - "Otra familia tambi\xE9n tiene dudas sobre una posible exposici\xF3n. Es una consulta distinta."
+  - "Yaku, me cort\xE9 al ordenar las cajas del almac\xE9n. \xBFMe acompa\xF1as a la posta?"
+  - No quiero dejar el trabajo a medias, pero esta herida necesita que la revisen.
+  - "Adem\xE1s, otra familia teme haber estado expuesta a mercurio."
+  - "No es el mismo problema. Por favor, cu\xE9ntale a Elena ambas situaciones."
+  voiceLines:
+  - {fileID: 8300000, guid: e415f3808b4149640aa543cfd367b4b9, type: 3}
+  - {fileID: 8300000, guid: 252e2a4bf33b0524aa04f0a3b28faaee, type: 3}
+  - {fileID: 8300000, guid: 906e8280f706c574ca407f50cd5af2ed, type: 3}
+  - {fileID: 8300000, guid: 59c6685ce1c53a049a4567f4efbcb044, type: 3}

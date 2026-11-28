@@ -15,6 +15,16 @@ MonoBehaviour:
   speaker: Elena
   portrait: {fileID: 0}
   lines:
-  - "Gracias, Yaku. Escuchaste a las familias, buscaste informaci\xF3n y compartiste los recursos con quienes los necesitaban."
-  - Cuando surja otra duda, recurre a los avisos vigentes y al personal de salud. Hoy dimos un paso para cuidar juntos la comunidad.
-  - "Las decisiones y entregas de este cap\xEDtulo quedaron registradas en tu diario."
+  - "Mira alrededor, Yaku. Hoy una familia tiene agua y otra recibi\xF3 alimentos evaluados."
+  - "Tom\xE1s recibi\xF3 orientaci\xF3n y los suministros llegaron a sus destinatarios."
+  - "No podemos decir que el peligro termin\xF3. El trabajo de la comunidad contin\xFAa."
+  - "Pero hoy escuchaste, comprobaste la informaci\xF3n y actuaste con responsabilidad."
+  - "Revisa tu diario: all\xED quedan las decisiones y aprendizajes de este cap\xEDtulo."
+  - La salud se protege entre todos. Eso es lo que empieza a cambiar nuestro futuro.
+  voiceLines:
+  - {fileID: 8300000, guid: ceeaa690137687f4aa2bda45e2840e7e, type: 3}
+  - {fileID: 8300000, guid: a681f24907dff904289776667671eb79, type: 3}
+  - {fileID: 8300000, guid: 43b1663273030484d86be2f7c907c9f7, type: 3}
+  - {fileID: 8300000, guid: ed6e3706f99636b498c3ad9f09d5aa4f, type: 3}
+  - {fileID: 8300000, guid: 04a3287d6c9b22049a71e1aaee699572, type: 3}
+  - {fileID: 8300000, guid: 8df8df3cf3fdc824b9576c61235e3fe8, type: 3}

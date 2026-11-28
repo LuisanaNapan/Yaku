@@ -15,5 +15,12 @@ MonoBehaviour:
   speaker: Elena
   portrait: {fileID: 0}
   lines:
-  - Una familia necesita agua. Revisa el aviso de monitoreo en el sendero de la ribera.
-  - "Qu\xE9date en el sendero. Observa el r\xEDo desde el mirador; no hace falta tocar el agua."
+  - Una familia espera agua segura. Y quisiera darte una respuesta sencilla, Yaku.
+  - "Pero el r\xEDo puede parecer tranquilo y aun as\xED existir riesgos que no vemos."
+  - Revisa el aviso de monitoreo en el sendero de la ribera.
+  - "Observa desde el mirador, sin tocar el agua. Despu\xE9s compara las fuentes disponibles."
+  voiceLines:
+  - {fileID: 8300000, guid: 225512ad835c1074d8ce34632c8a12ae, type: 3}
+  - {fileID: 8300000, guid: ca91653282ea6954c8084854be854b56, type: 3}
+  - {fileID: 8300000, guid: 47c0116676105214d8a0528d6294d5e0, type: 3}
+  - {fileID: 8300000, guid: aa811547fc53ba84f85a8325e054cdfe, type: 3}
